@@ -7,7 +7,7 @@ import WeekSchedule from "./entities/schedule_db/schedule.entity";
 
 const connectionOptions: MongoConnectionOptions = {
     type: 'mongodb',
-    url:process.env.DB_URL,
+    url: process.env.DB_URL,
     useUnifiedTopology: true,
     useNewUrlParser: true,
 };
