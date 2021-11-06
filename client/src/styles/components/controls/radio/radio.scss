@@ -1,0 +1,16 @@
+mat-radio-group.mat-radio-group {
+    display: flex;
+    gap: 16px;
+
+    &.column {
+        flex-direction: column;
+    }
+}
+
+mat-radio-button.mat-radio-button {
+
+    .mat-radio-ripple {
+        display: none;
+    }
+
+}

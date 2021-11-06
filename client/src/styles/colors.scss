@@ -1,0 +1,13 @@
+$primary-palette: mat.define-palette(mat.$deep-purple-palette);
+$accent-palette: mat.define-palette(mat.$amber-palette);
+
+$success-colors: mat.define-palette(mat.$green-palette, 400);
+$info-colors: mat.define-palette(mat.$blue-palette, 400);
+$warning-colors: mat.define-palette(mat.$amber-palette, 400);
+$error-colors: mat.define-palette(mat.$red-palette, 400);
+
+
+$topbar-bg: #fff;
+$sidebar-bg: #fff;
+$main-bg: #f3f6f9;
+

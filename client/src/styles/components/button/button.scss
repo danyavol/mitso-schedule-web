@@ -1,0 +1,33 @@
+.mat-button-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mat-stroked-button:not(.mat-button-disabled) {
+    &.mat-primary {
+        border-color: rgba(map.get($primary-palette, 500), 50%);
+    }
+}
+
+[mat-icon-button].mat-icon-button {
+    border-radius: 4px;
+    width: 36px;
+    height: 36px;
+
+    .mat-button-wrapper {
+        justify-content: center;
+    }
+
+    &.small {
+        width: 26px;
+        height: 26px;
+
+        .mat-icon {
+            width: 20px;
+            height: 20px;
+            font-size: 20px;
+            line-height: 20px;
+        }
+    }
+}

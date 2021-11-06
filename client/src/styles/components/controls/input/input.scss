@@ -1,0 +1,50 @@
+mat-form-field.mat-form-field {
+
+    .mat-form-field-wrapper {
+        padding: 0;
+        margin: 0;
+    }
+
+    .mat-form-field-subscript-wrapper {
+        position: static;
+        font-size: map.get($typography-config, caption, font-size);
+        margin-top: 0;
+    }
+
+    .mat-error {
+        margin-top: 5px;
+    }
+
+    &.mat-focused .mat-form-field-required-marker {
+        color: map.get($error-colors, 500);
+    }
+
+    &.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+        color: map.get($primary-palette, 500);
+    }
+
+
+
+
+    &.compact {
+        .mat-form-field-flex > .mat-form-field-infix {
+            padding: 0.4275em 0;
+        }
+    
+        .mat-form-field-label-wrapper {
+            top: -0.9em;
+        }
+    
+        .mat-form-field-label {
+            top: 1.3em;
+        }
+          
+        &.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+            transform: translateY(-1em) scale(0.75);
+        }
+    }
+    
+      
+}
+
+

@@ -1,0 +1,21 @@
+.form-group {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 16px;
+
+    &.column {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    > * {
+        flex-grow: 1;
+    }
+
+    + .form-group {
+        margin-top: 16px;
+    }
+
+}

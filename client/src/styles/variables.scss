@@ -1,0 +1,43 @@
+@use 'sass:map';
+@use '~@angular/material' as mat;
+
+@import './colors.scss';
+
+$typography-config: mat.define-typography-config();
+
+/*
+
+display-4
+display-3
+display-2
+display-1
+headline
+title
+subheading-2
+subheading-1
+body-2
+body-1
+caption
+
+$typography-config: mat.get-typography-config($theme);
+
+map.get($typography-config, caption, font-size);
+
+*/
+
+$app-theme: mat.define-light-theme((
+    color: (
+        primary: $primary-palette,
+        accent: $accent-palette
+    ),
+    typography: $typography-config
+));
+
+
+$breakpoints: (
+  xs: 0,
+  sm: 600px,
+  md: 960px,
+  lg: 1280px,
+  xl: 1920px
+);
