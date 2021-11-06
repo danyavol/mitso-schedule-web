@@ -22,6 +22,7 @@ app.use( cookieParser() )
 app.use(routes);
 
 // Database connection
+console.log('Connecting to database...');
 connectDatabase().then(() => {
     console.log('Database connected');
 
