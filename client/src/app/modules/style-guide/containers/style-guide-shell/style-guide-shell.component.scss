@@ -1,0 +1,20 @@
+@import '/src/styles/variables.scss';
+
+.container {
+    padding: 30px;
+}
+
+.section {
+    margin-bottom: 16px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &.column {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

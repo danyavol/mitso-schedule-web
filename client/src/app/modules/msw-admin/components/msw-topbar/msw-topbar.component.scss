@@ -1,0 +1,24 @@
+@use 'sass:map';
+@import '/src/styles/variables.scss';
+
+
+.mat-toolbar {
+    background-color: $topbar-bg;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .topbar-group {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        @media screen and (max-width: 960px) {
+            gap: 8px;
+        }
+    }
+}
+
+.group-selection-container {
+    font-size: map.get($typography-config, body-2, font-size);
+}

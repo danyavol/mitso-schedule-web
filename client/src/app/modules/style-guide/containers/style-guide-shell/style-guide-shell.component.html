@@ -1,0 +1,115 @@
+<div class="container">
+
+    <mat-card>
+        <button mat-stroked-button color="primary" routerLink="/" href="/">
+            <mat-icon svgIcon="arrow_back"></mat-icon>
+            Back
+        </button>
+
+        <!-- TYPOGRAPHY -->
+        <div fxLayout="row" fxLayoutAlign="space-around">
+            <div>
+                <p class="mat-display-4">display 4</p>
+                <p class="mat-display-3">display 3</p>
+                <p class="mat-display-2">display 2</p>
+            </div>
+            <div>
+                <p class="mat-display-1">display 1</p>
+                <h1 class="mat-headline">headline &lt;h1&gt;</h1>
+                <h2 class="mat-title">title &lt;h2&gt;</h2>
+                <h3 class="mat-subheading-2">subheading-2 &lt;h3&gt;</h3>
+                <h4 class="mat-subheading-1">subheading-1 &lt;h4&gt;</h4>
+                <p class="mat-body-2">body-2 &lt;strong&gt;</p>
+                <p class="mat-body-1">body-1 &lt;p&gt;</p>
+                <span class="mat-caption">caption</span>
+            </div>
+        </div>
+
+
+        <!-- BUTTONS -->
+        <div class="section flex">
+            <button mat-button color="primary">Basic primary</button>
+            <button mat-button color="primary" disabled>Basic disabled</button>
+        </div>
+        <div class="section flex">
+            <button mat-flat-button color="primary">Flat primary</button>
+            <button mat-flat-button color="accent">Flat accent</button>
+            <button mat-flat-button color="primary">
+                <mat-icon svgIcon="settings"></mat-icon>
+                Settings
+            </button>
+            <button mat-flat-button color="primary" disabled>
+                <mat-icon svgIcon="settings"></mat-icon>
+                Settings
+            </button>            
+        </div>
+        <div class="section flex">
+            <button mat-stroked-button color="primary">Stroked primary</button>
+            <button mat-stroked-button color="primary">
+                <mat-icon svgIcon="settings"></mat-icon>
+                Settings
+            </button>
+            <button mat-stroked-button color="primary" disabled>
+                <mat-icon svgIcon="settings"></mat-icon>
+                Settings
+            </button>
+        </div>
+        <div class="section flex">
+            <button mat-icon-button color="primary">
+                <mat-icon svgIcon="arrow_back"></mat-icon>
+            </button>
+            <button mat-icon-button color="primary" class="small">
+                <mat-icon svgIcon="arrow_back"></mat-icon>
+            </button>
+        </div>
+
+        <!-- CHECKBOX -->
+        <div class="section flex">
+            <mat-checkbox>Check me!</mat-checkbox>
+            <mat-checkbox [checked]="true">Check me!</mat-checkbox>
+            <mat-checkbox disabled>Check me!</mat-checkbox>
+            <mat-checkbox [checked]="true" disabled>Check me!</mat-checkbox>
+        </div>
+
+
+        <!-- RADIO -->
+        <div class="section flex">
+            <mat-radio-group value="2" class="column">
+                <mat-radio-button value="1">Option 1</mat-radio-button>
+                <mat-radio-button value="2">Option 2</mat-radio-button>
+                <mat-radio-button value="3" disabled>Option 3</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        
+
+        <!-- FORM CONTROLS -->
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>Пароль</mat-label>
+                <input matInput type="text" required>
+                <mat-error>
+                    123
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="compact">
+                <mat-label>Пароль</mat-label>
+                <input matInput type="text" required>
+                <mat-error>
+                    123
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Toppings</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let topping of [1, 2, 3]" [value]="topping">{{topping}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            
+        </div>
+    </mat-card>
+</div>
+
+

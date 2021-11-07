@@ -1,0 +1,52 @@
+@use 'sass:map';
+
+@import '/src/styles/variables.scss';
+
+$icon-size: 28px;
+$sidebar-width: 280px;
+
+.sidebar {
+    height: 100%;
+    width: $sidebar-width;
+
+    .active-group {
+        padding: 16px;
+        box-sizing: border-box;
+    }
+
+    .menu-button {
+        border-radius: 0;
+        text-align: left;
+        font-size: map.get($typography-config, subheading-2, font-size);
+        font-weight: map.get($typography-config, subheading-2, font-weight);
+        padding: 4px 28px;
+
+        > .mat-button-wrapper {
+            justify-content: flex-start;
+        }
+        
+    
+        .menu-icon {
+            margin-right: 10px;
+            font-size: $icon-size;
+            height: $icon-size;
+            width: $icon-size;
+        }
+
+        &.active {
+            $primary-color: map.get($primary-palette, 500);
+            
+            color: $primary-color;
+            background-color: rgba($primary-color, 15%);
+
+            &:hover {
+                background-color: rgba($primary-color, 25%);
+            }
+        }
+    }
+}
+
+.mat-divider {
+    margin: 16px;
+}
+

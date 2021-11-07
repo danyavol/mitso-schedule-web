@@ -1,0 +1,17 @@
+<div class="topbar">
+    <msw-topbar [sidenav]="sidenav"></msw-topbar>
+</div>
+
+<mat-sidenav-container>
+
+    <mat-sidenav class="sidebar" #sidenav [opened]="opened" [mode]="mode" [autoFocus]="false">
+        <msw-sidebar [sidenav]="sidenav"></msw-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div class="main-container">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
