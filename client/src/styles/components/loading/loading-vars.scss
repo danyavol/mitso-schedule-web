@@ -1,0 +1,17 @@
+@use 'sass:map';
+@import 'src/styles/variables.scss';
+
+$container-min-height: 150px;
+
+$spinner-size: 70px;
+$spinner-color: map.get($primary-palette, 500);
+$offset: 187;
+$offset-button: 90;
+$duration: 1.4s;
+
+$label-size: map.get($typography-config, subheading-2, font-size);;
+$label-color: #000000cc;
+
+$disabled-text-color: #00000042;
+$disabled-border-color: #00000026;
+$disabled-background-color: #00000012;

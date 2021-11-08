@@ -6,11 +6,11 @@ const auth = Router();
 export default auth;
 
 
-auth.get('/', async (req, res) => {
+auth.post('/', async (req, res) => {
     const { password } = req.body;
     if (password === SUPERADMIN_PASS) {
         createAdminToken(res);
-        res.sendStatus(200);
+        res.sendStatus(204);
     } else {
         res.sendStatus(401);
     }

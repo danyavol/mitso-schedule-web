@@ -9,6 +9,7 @@ mat-form-field.mat-form-field {
         position: static;
         font-size: map.get($typography-config, caption, font-size);
         margin-top: 0;
+        min-height: 18px;
     }
 
     .mat-error {
@@ -23,9 +24,7 @@ mat-form-field.mat-form-field {
         color: map.get($primary-palette, 500);
     }
 
-
-
-
+    // Add this class to make control smaller
     &.compact {
         .mat-form-field-flex > .mat-form-field-infix {
             padding: 0.4275em 0;
@@ -43,8 +42,14 @@ mat-form-field.mat-form-field {
             transform: translateY(-1em) scale(0.75);
         }
     }
+
+    // Add this class to remove reserved space for error
+    &.no-error {
+        .mat-form-field-subscript-wrapper {
+            min-height: auto;
+        }
+    }
     
-      
 }
 
 

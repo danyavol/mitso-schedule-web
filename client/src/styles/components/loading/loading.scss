@@ -1,0 +1,129 @@
+@import './loading-vars.scss';
+
+.msw-block-loading,
+.msw-button-loading {
+    position: relative;
+    min-height: $container-min-height;
+    pointer-events: none;
+    @keyframes colors {
+        0% {
+            stroke: $spinner-color;
+        }
+        100% {
+            stroke: $spinner-color;
+        }
+    }
+
+    .msw-spinner-container {
+        position: absolute;
+        background-color: rgba(white, 0.8);
+        border-radius: inherit;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 99;
+        display: flex;
+        > div {
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    .msw-spinner {
+        animation: rotator $duration linear infinite;
+        width: $spinner-size;
+        height: $spinner-size;
+    }
+
+    .msw-spinner-label {
+        font-size: $label-size;
+        color: $label-color;
+        padding-top: 10px;
+        text-align: center;
+    }
+
+    @keyframes rotator {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .path {
+        stroke-dasharray: $offset;
+        stroke-dashoffset: 0;
+        transform-origin: center;
+        animation: dash $duration ease-in-out infinite, colors ($duration * 4) ease-in-out infinite;
+    }
+
+    @keyframes dash {
+        0% {
+            stroke-dashoffset: $offset;
+        }
+        50% {
+            stroke-dashoffset: $offset/4;
+            transform: rotate(90deg);
+        }
+        100% {
+            stroke-dashoffset: $offset;
+            transform: rotate(360deg);
+        }
+    }
+
+
+}
+
+
+.msw-button-loading {
+    pointer-events: none;
+
+    &.mat-flat-button,
+    &.mat-button {
+        background-color: $disabled-background-color !important;
+        .mat-button-wrapper{
+            color: $disabled-text-color;
+        }
+    }
+
+    &.mat-stroked-button:not([disabled]) {
+        border-color: $disabled-border-color;
+        .mat-button-wrapper{
+            color: $disabled-text-color;
+        }
+    }
+
+    min-height: inherit;
+
+    .path {
+        stroke-dasharray: $offset-button;
+    }
+
+    .msw-spinner {
+        animation: rotator $duration linear infinite;
+        width: 30px;
+        height: 30px;
+    }
+
+    .msw-spinner-container {
+        background-color: transparent;
+    }
+
+    @keyframes dash {
+        0% {
+            stroke-dashoffset: $offset-button;
+        }
+        50% {
+            stroke-dashoffset: $offset-button/2;
+            transform: rotate(90deg);
+        }
+        100% {
+            stroke-dashoffset: $offset-button;
+            transform: rotate(360deg);
+        }
+    }
+}

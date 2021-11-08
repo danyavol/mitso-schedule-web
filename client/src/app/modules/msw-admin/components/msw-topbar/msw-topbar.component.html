@@ -16,7 +16,7 @@
     <div class="topbar-group">
 
         <ng-container *ngIf="!isMobileView">
-            <button mat-stroked-button color="primary">
+            <button mat-stroked-button color="primary" (click)="logout()">
                 <mat-icon svgIcon="logout"></mat-icon>
                 Выйти
             </button>

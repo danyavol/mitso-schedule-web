@@ -1,0 +1,25 @@
+@use 'sass:map';
+@import 'src/styles/variables.scss';
+
+.wrapper {
+    height: 100%;
+
+    > .card {
+        min-height: 400px;
+
+        @media screen and (max-width: map.get($breakpoints, sm)) {
+            height: 100%;
+        }
+
+    }
+}
+
+.form-title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-description {
+    margin-bottom: 16px;
+    color: $muted-color;
+}

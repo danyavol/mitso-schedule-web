@@ -15,6 +15,7 @@ import { MatSelectModule, MAT_SELECT_CONFIG } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ValidationErrorComponent } from './components/validation-error/validation-error.component';
+import { LoadingDirective } from './directives/loading.directive';
 
 
 
@@ -40,8 +41,9 @@ const NG_MODULES = [
 
 @NgModule({
     declarations: [
-    ValidationErrorComponent
-  ],
+        ValidationErrorComponent,
+        LoadingDirective,
+    ],
     imports: [
         CommonModule,
         ...NG_MATERIALS,
@@ -52,6 +54,7 @@ const NG_MODULES = [
         ...NG_MATERIALS,
         ...NG_MODULES,
         ValidationErrorComponent,
+        LoadingDirective,
     ],
     providers: [
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline', floatLabel: 'auto' } },

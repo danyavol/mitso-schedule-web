@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { MSWAdminAuthService } from '@modules/msw-admin/services/msw-admin-auth.service';
 
 @Component({
     selector: 'msw-topbar',
@@ -10,7 +11,9 @@ export class MSWTopbarComponent implements OnInit {
 
     @Input() sidenav: MatSidenav;
 
-    constructor() { }
+    constructor(
+        private authService: MSWAdminAuthService
+    ) { }
 
     ngOnInit(): void {
     }
@@ -23,5 +26,8 @@ export class MSWTopbarComponent implements OnInit {
         return this.sidenav.opened;
     }
 
+    public logout(): void {
+        this.authService.logOut();
+    }
 
 }

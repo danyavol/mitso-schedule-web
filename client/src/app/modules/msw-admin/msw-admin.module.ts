@@ -8,6 +8,9 @@ import { MSWAdminShellComponent } from './containers/msw-admin-shell/msw-admin-s
 import { DashboardShellComponent } from './containers/dashboard-shell/dashboard-shell.component';
 import { MSWSidebarComponent } from './components/msw-sidebar/msw-sidebar.component';
 import { MSWTopbarComponent } from './components/msw-topbar/msw-topbar.component';
+import { LoginApiService } from './services/login-api.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MSWAdminHttpAuthInterceptor } from './interceptors/http-auth.interceptor';
 
 
 
@@ -26,6 +29,8 @@ import { MSWTopbarComponent } from './components/msw-topbar/msw-topbar.component
     ],
     providers: [
         MSWAdminAuthService,
+        LoginApiService,
+        { provide: HTTP_INTERCEPTORS, useClass: MSWAdminHttpAuthInterceptor, multi: true },
     ]
 })
 export class MswAdminModule { }

@@ -94,7 +94,11 @@ export class HttpService {
         if (err.error instanceof ErrorEvent) {
             message = `An error occurred: ${err.error.message}`;
             status = err.error.status;
-        } else {
+        } else if (err.error?.message) {
+            message = `${err.error.message}`,
+            status = err.status;
+        } 
+        else {
             message = `Backend returned code ${err.status}: ${err.message}`;
             status = err.status;
         }

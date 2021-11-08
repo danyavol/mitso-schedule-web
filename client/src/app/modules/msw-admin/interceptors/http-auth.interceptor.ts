@@ -3,14 +3,13 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse
 
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { AuthenticationService } from '@core/services/authentication.service';
+import { MSWAdminAuthService } from '../services/msw-admin-auth.service';
 
-/** Pass untouched request through to the next request handler. */
 @Injectable()
-export class HttpAuthInterceptor implements HttpInterceptor {
+export class MSWAdminHttpAuthInterceptor implements HttpInterceptor {
 
     constructor(
-        private authService: AuthenticationService
+        private authService: MSWAdminAuthService
     ) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
