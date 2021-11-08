@@ -1,0 +1,90 @@
+@use 'sass:map';
+@import '/src/styles/variables.scss';
+
+$error-background-color: map.get($error-colors, 400);
+$error-text-color: map.get($error-colors, contrast, 400);
+$error-icon-color: map.get($error-colors, 900);
+
+$success-background-color: map.get($success-colors, 400);
+$success-text-color: map.get($success-colors, contrast, 400);
+$success-icon-color: map.get($success-colors, 900);
+
+$warning-background-color: map.get($warning-colors, 400);
+$warning-text-color: map.get($warning-colors, contrast, 400);
+$warning-icon-color: map.get($warning-colors, 900);
+
+$info-background-color: map.get($info-colors, 300);
+$info-text-color: map.get($info-colors, contrast, 300);
+$info-icon-color: map.get($info-colors, 900);
+
+
+::ng-deep.msw-notification {
+    .icon {
+        font-size: 20px;
+        margin-right: 16px;
+
+        > * {
+            display: none;
+        }
+    }
+
+    .exit .mat-icon-button {
+        color: rgba(0,0,0,.5);
+        font-size: 14px;
+        line-height: normal;
+        padding: 0 4px;
+
+        &:hover {
+            color: rgba(0,0,0,.95);
+        }
+    }
+}
+
+
+::ng-deep.mat-snack-bar-container {
+
+    &.notification-info {
+        background-color: $info-background-color;
+        .info-icon {
+            display: block;
+            color: $info-icon-color;
+        }
+        .message {
+            color: $info-text-color;
+        }
+    }
+
+    &.notification-warning {
+        background-color: $warning-background-color;
+        .warning-icon {
+            display: block;
+            color: $warning-icon-color;
+        }
+        .message {
+            color: $warning-text-color;
+        }
+    }
+
+    &.notification-success {
+        background-color: $success-background-color;
+        .success-icon {
+            display: block;
+            color: $success-icon-color;
+        }
+        .message {
+            color: $success-text-color;
+        }
+    }
+
+    &.notification-error {
+        background-color: $error-background-color;
+        .error-icon {
+            display: block;
+            color: $error-icon-color;
+        }
+        .message {
+            color: $error-text-color;
+        }
+    }
+
+}

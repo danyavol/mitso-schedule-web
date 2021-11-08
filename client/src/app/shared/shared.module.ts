@@ -1,4 +1,4 @@
-import { LayoutModule } from '@angular/cdk/layout';``
+import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -13,10 +13,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 import { MatSelectModule, MAT_SELECT_CONFIG } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { NotificationComponent } from './components/notification/notification.component';
 import { ValidationErrorComponent } from './components/validation-error/validation-error.component';
 import { LoadingDirective } from './directives/loading.directive';
-
 
 
 const NG_MATERIALS = [
@@ -31,6 +32,7 @@ const NG_MATERIALS = [
     MatCheckboxModule,
     MatRadioModule,
     MatSelectModule,
+    MatSnackBarModule,
 ];
 
 const NG_MODULES = [
@@ -43,6 +45,7 @@ const NG_MODULES = [
     declarations: [
         ValidationErrorComponent,
         LoadingDirective,
+        NotificationComponent,
     ],
     imports: [
         CommonModule,
@@ -61,6 +64,13 @@ const NG_MODULES = [
         { provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: { color: 'primary' } },
         { provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: { color: 'primary' } },
         { provide: MAT_SELECT_CONFIG, useValue: { disableOptionCentering: true } },
+        {
+            provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+            useValue: {
+                horizontalPosition: 'right',
+                verticalPosition: 'top'
+            } 
+        }
     ]
 })
 export class SharedModule { }

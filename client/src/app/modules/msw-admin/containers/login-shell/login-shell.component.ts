@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatSnackBarRef } from '@angular/material/snack-bar';
 import { LoginApiService } from '@modules/msw-admin/services/login-api.service';
 import { MSWAdminAuthService } from '@modules/msw-admin/services/msw-admin-auth.service';
+import { NotificationService } from '@shared/services/notification.service';
 import { finalize } from 'rxjs/operators';
 
 @Component({
@@ -9,26 +11,29 @@ import { finalize } from 'rxjs/operators';
     templateUrl: './login-shell.component.html',
     styleUrls: ['./login-shell.component.scss']
 })
-export class LoginShellComponent implements OnInit {
+export class LoginShellComponent implements OnDestroy {
 
     public passwordControl = new FormControl('', Validators.required);
     public isLoading = false;
     public serverError: string;
     public showServerError: boolean = false;
+    private errorNotification: MatSnackBarRef<any>;
 
     constructor(
         private authService: MSWAdminAuthService,
-        private apiService: LoginApiService
+        private apiService: LoginApiService,
+        private notification: NotificationService,
     ) { }
 
-    ngOnInit(): void {
+    ngOnDestroy(): void {
+        this.errorNotification?.dismiss();
     }
 
     public submit(): void {
         this.passwordControl.markAllAsTouched();
         if (this.passwordControl.invalid) return;
 
-        this.showServerError = false;
+        this.errorNotification?.dismiss();
         this.isLoading = true;
         this.apiService.logIn(this.passwordControl.value)
             .pipe(
@@ -36,11 +41,11 @@ export class LoginShellComponent implements OnInit {
             )
             .subscribe(() => {
                 this.authService.logIn();
+                this.notification.success('Вход выполнен успешно!');
             },
             err => {
                 if (err.status === 401) {
-                    this.showServerError = true;
-                    this.serverError = 'Неверный пароль. Попробуйте еще раз';
+                    this.errorNotification = this.notification.error('Неверный пароль!');
                 }
             });
     }

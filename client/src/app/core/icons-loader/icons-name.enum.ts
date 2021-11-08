@@ -9,4 +9,8 @@ export enum IconsEnum {
     close = 'close',
     people = 'people',
     style = 'style',
+    info = 'info',
+    warning = 'warning',
+    error = 'error',
+    success = 'success',
 }

@@ -1,0 +1,14 @@
+<div class="msw-notification">
+    <div class="icon" fxFlexAlign="center">
+        <mat-icon class="info-icon" svgIcon="info"></mat-icon>
+        <mat-icon class="warning-icon" svgIcon="warning"></mat-icon>
+        <mat-icon class="success-icon" svgIcon="success"></mat-icon>
+        <mat-icon class="error-icon" svgIcon="error"></mat-icon>
+    </div>
+    <div class="message" fxFlex="1 1 auto" fxFlexAlign="center">{{data}}</div>
+    <div class="exit">
+        <button mat-icon-button color="primary" class="small" (click)="ref.dismiss()">
+            <mat-icon svgIcon="close"></mat-icon>
+        </button>
+    </div>
+</div>
