@@ -1,0 +1,17 @@
+
+
+.table-wrapper {
+    overflow-x: auto;
+
+    table {
+        width: 100%;
+    }
+}
+
+::ng-deep.mat-column-lastUseAt, ::ng-deep.mat-column-createdAt {
+    text-align: center;
+    
+    .mat-sort-header-container {
+        justify-content: center;
+    }
+}

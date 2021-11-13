@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '@core/services/local-storage.service';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class MSWAdminAuthService {
 
     private lsAuthKey = 'msw-admin-logged-in';

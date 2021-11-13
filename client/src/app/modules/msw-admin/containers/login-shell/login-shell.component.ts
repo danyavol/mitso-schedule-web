@@ -1,13 +1,13 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBarRef } from '@angular/material/snack-bar';
+import { MSWAdminAuthService } from '@core/services/msw-admin-auth.service';
 import { LoginApiService } from '@modules/msw-admin/services/login-api.service';
-import { MSWAdminAuthService } from '@modules/msw-admin/services/msw-admin-auth.service';
 import { NotificationService } from '@shared/services/notification.service';
 import { finalize } from 'rxjs/operators';
 
 @Component({
-    selector: 'app-login-shell',
+    selector: 'login-shell',
     templateUrl: './login-shell.component.html',
     styleUrls: ['./login-shell.component.scss']
 })

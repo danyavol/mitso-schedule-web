@@ -9,6 +9,6 @@ export class LoginApiService {
 
     public logIn(password: string): Observable<void> {
         const path = '/api/auth';
-        return this.http.post(path, { password });
+        return this.http.post(path, { password }, {});
     }
 }

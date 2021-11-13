@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { MSWAdminAuthService } from '../services/msw-admin-auth.service';
+import { MSWAdminAuthService } from '@core/services/msw-admin-auth.service';
 
 @Injectable()
 export class MSWAdminGuard implements CanActivate, CanActivateChild {

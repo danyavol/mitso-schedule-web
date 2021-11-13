@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { MSWAdminAuthService } from '@modules/msw-admin/services/msw-admin-auth.service';
+import { MSWAdminAuthService } from '@core/services/msw-admin-auth.service';
 
 @Component({
     selector: 'msw-topbar',

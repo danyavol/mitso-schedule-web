@@ -18,6 +18,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ValidationErrorComponent } from './components/validation-error/validation-error.component';
 import { LoadingDirective } from './directives/loading.directive';
+import { MswDatePipe } from './pipes/msw-date.pipe';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 const NG_MATERIALS = [
@@ -33,6 +37,9 @@ const NG_MATERIALS = [
     MatRadioModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
 ];
 
 const NG_MODULES = [
@@ -46,6 +53,7 @@ const NG_MODULES = [
         ValidationErrorComponent,
         LoadingDirective,
         NotificationComponent,
+        MswDatePipe,
     ],
     imports: [
         CommonModule,
@@ -58,6 +66,7 @@ const NG_MODULES = [
         ...NG_MODULES,
         ValidationErrorComponent,
         LoadingDirective,
+        MswDatePipe,
     ],
     providers: [
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline', floatLabel: 'auto' } },
