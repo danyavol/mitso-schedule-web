@@ -1,5 +1,65 @@
+$primary-color: map.get($primary-palette, 500);
+
 .mat-card {
+
+    .mat-card-header {
+
+        .mat-card-header-text {
+            display: none;
+        }
+
+        .mat-card-title {
+            margin: 0;
+        }
+    }
+
     &.large-paddings {
         padding: 48px 40px; 
     }
 }
+
+.mat-card .mat-card-header.toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin: -16px -16px 0 -16px;
+    padding: 16px 24px;
+    border-bottom: 1px solid $border-color;
+
+    .toolbar-left, .toolbar-right {
+        display: flex;
+    }
+
+    .toolbar-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        + .toolbar-group {
+            margin-left: 16px;
+
+            &:before {
+                content: '';
+                width: 2px;
+                height: 20px;
+                background-color: rgba(0, 0, 0, 0.3);
+                margin-right: 16px;
+            }
+        }
+
+        &.toolbar-desktop {
+            display: flex;
+        }
+
+        &.toolbar-mobile {
+            display: none;
+        }
+    }
+
+    .toolbar-value {
+        font-size: 20px;
+        font-weight: 600;
+        color: $primary-color;
+    }
+
+}
+

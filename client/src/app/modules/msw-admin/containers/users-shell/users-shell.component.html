@@ -1,1 +1,24 @@
-<users-table></users-table>
+<mat-card>
+    <mat-card-header class="toolbar">
+        <div class="toolbar-left">
+            <div class="toolbar-group" *show-if="'Desktop'">
+                <mat-card-title>Пользователи</mat-card-title>
+            </div>
+            <div class="toolbar-group" *ngIf="totalItems != null">
+                <div class="toolbar-value">{{totalItems}}</div>
+            </div>
+        </div>
+        <div class="toolbar-right">
+            <div class="toolbar-group">
+                <button mat-icon-button color="primary" (click)="onRefreshClick()">
+                    <mat-icon svgIcon="refresh"></mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-card-header>
+    <mat-card-content [loading]="isLoading">
+        <users-table [mappedUsers$]="mappedUsers$"></users-table>
+    </mat-card-content>
+</mat-card>
+
+

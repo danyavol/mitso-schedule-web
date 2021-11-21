@@ -22,14 +22,13 @@ $toolbar-height: 64px;
 
     .main-container {
         background-color: $main-bg;
-        padding: 40px;
+        padding: 30px;
         min-height: calc(100vh - #{$toolbar-height});
-        box-sizing: border-box;
         max-width: 1028px;
         margin: auto;
     
         @media screen and (max-width: 960px) {
-            padding: 20px
+            padding: 12px
         }
     }
 }

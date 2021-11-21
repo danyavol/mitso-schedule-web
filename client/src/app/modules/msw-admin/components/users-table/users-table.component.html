@@ -1,7 +1,5 @@
-<h3>Всего пользователей: {{totalItems}}</h3>
-
 <div class="table-wrapper">
-    <table mat-table [dataSource]="dataSource" [loading]="isLoading" matSort>
+    <table mat-table [dataSource]="dataSource" matSort>
 
         <ng-container matColumnDef="username">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Логин</th>
@@ -24,7 +22,7 @@
         </ng-container>
     
         <ng-container matColumnDef="lastUseAt">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата последнего использования</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Последнее использование</th>
             <td mat-cell *matCellDef="let element"> {{element.lastUseAt | mswDate}} </td>
         </ng-container>
     
@@ -33,5 +31,4 @@
     </table>
 </div>
 
-
-<mat-paginator [pageSizeOptions]="[15]" showFirstLastButtons></mat-paginator>
+<msw-paginator></msw-paginator>

@@ -8,8 +8,6 @@ import { DashboardShellComponent } from './containers/dashboard-shell/dashboard-
 import { MSWSidebarComponent } from './components/msw-sidebar/msw-sidebar.component';
 import { MSWTopbarComponent } from './components/msw-topbar/msw-topbar.component';
 import { LoginApiService } from './services/login-api.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MSWAdminHttpAuthInterceptor } from '../../core/interceptors/http-auth.interceptor';
 import { UsersShellComponent } from './containers/users-shell/users-shell.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
 import { UsersApiService } from './services/users-api.service';

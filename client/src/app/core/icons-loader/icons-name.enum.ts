@@ -13,4 +13,6 @@ export enum IconsEnum {
     warning = 'warning',
     error = 'error',
     success = 'success',
+    refresh = 'refresh',
+    tune = 'tune',
 }

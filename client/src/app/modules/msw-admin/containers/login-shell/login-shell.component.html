@@ -8,7 +8,7 @@
             <div class="form-group column">
                 <mat-form-field>
                     <mat-label>Пароль</mat-label>
-                    <input matInput [formControl]="passwordControl" required autocomplete="off">
+                    <input matInput [formControl]="passwordControl" required type="password" autocomplete="off">
                     <mat-error>
                         <validation-error [control]="passwordControl"></validation-error>
                         <ng-container *ngIf="showServerError">{{serverError}}</ng-container>

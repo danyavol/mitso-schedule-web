@@ -21,7 +21,9 @@ import { LoadingDirective } from './directives/loading.directive';
 import { MswDatePipe } from './pipes/msw-date.pipe';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MswPaginator } from './components/msw-paginator/msw-paginator.component';
+import { AdaptiveViewDirective } from './directives/adaptive-view.directive';
 
 
 const NG_MATERIALS = [
@@ -54,6 +56,8 @@ const NG_MODULES = [
         LoadingDirective,
         NotificationComponent,
         MswDatePipe,
+        MswPaginator,
+        AdaptiveViewDirective,
     ],
     imports: [
         CommonModule,
@@ -67,6 +71,8 @@ const NG_MODULES = [
         ValidationErrorComponent,
         LoadingDirective,
         MswDatePipe,
+        MswPaginator,
+        AdaptiveViewDirective,
     ],
     providers: [
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline', floatLabel: 'auto' } },
@@ -79,7 +85,8 @@ const NG_MODULES = [
                 horizontalPosition: 'right',
                 verticalPosition: 'top'
             } 
-        }
+        },
+        { provide: MatPaginatorIntl, useClass: MswPaginator }
     ]
 })
 export class SharedModule { }
