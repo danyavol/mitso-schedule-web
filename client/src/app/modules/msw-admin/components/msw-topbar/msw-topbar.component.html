@@ -10,7 +10,10 @@
             </button>
         </div>
 
-        <h3 *ngIf="isMobileView">Заметки</h3>
+        <h3 *ngIf="isMobileView">
+            <ng-container *ngIf="url === '/msw-admin/users'">Пользователи</ng-container>
+            <ng-container *ngIf="url === '/msw-admin/dashboard'">Статистика</ng-container>
+        </h3>
     </div>
 
     <div class="topbar-group">

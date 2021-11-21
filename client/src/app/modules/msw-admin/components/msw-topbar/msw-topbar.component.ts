@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 import { MSWAdminAuthService } from '@core/services/msw-admin-auth.service';
 
 @Component({
@@ -7,22 +8,24 @@ import { MSWAdminAuthService } from '@core/services/msw-admin-auth.service';
     templateUrl: './msw-topbar.component.html',
     styleUrls: ['./msw-topbar.component.scss']
 })
-export class MSWTopbarComponent implements OnInit {
+export class MSWTopbarComponent {
 
     @Input() sidenav: MatSidenav;
 
     constructor(
-        private authService: MSWAdminAuthService
+        private authService: MSWAdminAuthService,
+        public router: Router,
     ) { }
-
-    ngOnInit(): void {
+    
+    public get url(): string {
+        return this.router.url;
     }
 
-    get isMobileView(): boolean {
+    public get isMobileView(): boolean {
         return this.sidenav.mode === 'over';
     }
 
-    get isSidenavOpened(): boolean {
+    public get isSidenavOpened(): boolean {
         return this.sidenav.opened;
     }
 
