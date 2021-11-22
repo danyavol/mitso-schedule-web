@@ -28,7 +28,6 @@ export function adminOnly(req: Request, res: Response, next: NextFunction): void
     
     if (tokenPayload?.sub === adminLabel) {
         // Valid admin token
-        console.log('payload', tokenPayload);
         createAdminToken(res);
         next();
     } else {
