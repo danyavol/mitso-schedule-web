@@ -1,0 +1,13 @@
+<mat-card>
+    <mat-card-content [loading]="isLoading">
+        <apx-chart
+            #chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [dataLabels]="chartOptions.dataLabels"
+            [title]="chartOptions.title"
+            [xaxis]="chartOptions.xaxis"
+            [tooltip]="chartOptions.tooltip"
+        ></apx-chart> 
+    </mat-card-content>
+</mat-card>

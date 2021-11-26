@@ -24,6 +24,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MswPaginator } from './components/msw-paginator/msw-paginator.component';
 import { AdaptiveViewDirective } from './directives/adaptive-view.directive';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 const NG_MATERIALS = [
@@ -63,6 +64,7 @@ const NG_MODULES = [
         CommonModule,
         ...NG_MATERIALS,
         ...NG_MODULES,
+        NgApexchartsModule,
     ],
     exports: [
         CommonModule,
@@ -73,6 +75,7 @@ const NG_MODULES = [
         MswDatePipe,
         MswPaginator,
         AdaptiveViewDirective,
+        NgApexchartsModule,
     ],
     providers: [
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline', floatLabel: 'auto' } },

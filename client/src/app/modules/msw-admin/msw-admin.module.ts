@@ -12,6 +12,8 @@ import { UsersShellComponent } from './containers/users-shell/users-shell.compon
 import { UsersTableComponent } from './components/users-table/users-table.component';
 import { UsersApiService } from './services/users-api.service';
 import { UsersTableMapService } from './components/users-table/users-table-map.service';
+import { RegistrationsChartComponent } from './components/charts/registrations-chart/registrations-chart.component';
+import { DashboardApiService } from './services/dashboard-api.service';
 
 
 
@@ -24,6 +26,7 @@ import { UsersTableMapService } from './components/users-table/users-table-map.s
         MSWTopbarComponent,
         UsersShellComponent,
         UsersTableComponent,
+        RegistrationsChartComponent,
     ],
     imports: [
         CommonModule,
@@ -33,7 +36,8 @@ import { UsersTableMapService } from './components/users-table/users-table-map.s
     providers: [
         LoginApiService,
         UsersApiService,
-        UsersTableMapService
+        UsersTableMapService,
+        DashboardApiService,
     ]
 })
 export class MswAdminModule { }

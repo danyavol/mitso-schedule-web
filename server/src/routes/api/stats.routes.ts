@@ -91,6 +91,24 @@ stats.get('/newUsers', async (req, res) => {
 
 stats.get('/registrationChart', async (req, res) => {
     const allUsers = await db.UserRepository().find();
-    const result = allUsers.map(u => u.createdAt?.toISOString()).filter(value => !!value);
+
+    const dates = allUsers.map(u => {
+        if (!u.createdAt) return null;
+        const date = new Date(u.createdAt.getTime());
+        date.setUTCHours(-3, 0, 0, 0);
+        return date.getTime();
+    }).filter(value => !!value).sort();
+
+    const result: [number, number][] = [];
+    let currDate = dates[0];
+
+    dates.forEach((date, index) => {
+        if (date !== currDate) {
+            result.push([currDate, index]);
+            currDate = date;
+        }
+    });
+    result.push([dates[dates.length-1], dates.length]);
+
     res.json(result);
 })
