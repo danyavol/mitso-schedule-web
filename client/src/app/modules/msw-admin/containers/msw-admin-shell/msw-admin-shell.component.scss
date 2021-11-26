@@ -24,8 +24,9 @@ $toolbar-height: 64px;
         background-color: $main-bg;
         padding: 30px;
         min-height: calc(100vh - #{$toolbar-height});
-        max-width: 1028px;
+        max-width: 1500px;
         margin: auto;
+        box-sizing: border-box;
     
         @media screen and (max-width: 960px) {
             padding: 12px

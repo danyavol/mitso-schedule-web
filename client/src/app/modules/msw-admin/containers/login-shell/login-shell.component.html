@@ -1,6 +1,6 @@
 <div fxLayoutAlign="center center" class="wrapper">
     <mat-card fxFlex.lt-sm="100%" fxFlex="450px" fxLayoutAlign="center" fxLayout="column" class="card large-paddings">
-        <mat-card-content >
+        <mat-card-content>
 
             <h1 class="form-title">Панель управления</h1>
             <p class="form-description">Данный раздел предназначен для администраторов.<br>Введите пароль для доступа</p>
@@ -8,7 +8,7 @@
             <div class="form-group column">
                 <mat-form-field>
                     <mat-label>Пароль</mat-label>
-                    <input matInput [formControl]="passwordControl" required type="password" autocomplete="off">
+                    <input matInput [formControl]="passwordControl" required type="password" autocomplete="off" (keyup.enter)="submit()">
                     <mat-error>
                         <validation-error [control]="passwordControl"></validation-error>
                         <ng-container *ngIf="showServerError">{{serverError}}</ng-container>
