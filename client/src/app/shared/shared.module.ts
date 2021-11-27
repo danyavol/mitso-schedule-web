@@ -10,21 +10,22 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 import { MatSelectModule, MAT_SELECT_CONFIG } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { MswPaginator } from './components/msw-paginator/msw-paginator.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ValidationErrorComponent } from './components/validation-error/validation-error.component';
+import { AdaptiveViewDirective } from './directives/adaptive-view.directive';
 import { LoadingDirective } from './directives/loading.directive';
 import { MswDatePipe } from './pipes/msw-date.pipe';
-import { MatTableModule } from '@angular/material/table';
-import { MatSortModule } from '@angular/material/sort';
-import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
-import { MswPaginator } from './components/msw-paginator/msw-paginator.component';
-import { AdaptiveViewDirective } from './directives/adaptive-view.directive';
-import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 const NG_MATERIALS = [
@@ -43,6 +44,7 @@ const NG_MATERIALS = [
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatProgressBarModule,
 ];
 
 const NG_MODULES = [

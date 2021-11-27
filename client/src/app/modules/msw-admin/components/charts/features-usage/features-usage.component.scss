@@ -1,0 +1,29 @@
+.title {
+    text-align: center;
+}
+
+.feature {
+    &:not(:last-child) {
+        margin-bottom: 15px;
+    }
+
+    .feature-title {
+        margin-bottom: 0;
+    }
+
+    .feature-bar-wrapper {
+        display: flex;
+        align-items: center;
+        min-height: 20px;
+
+        .feature-bar-value {
+            flex-basis: 50px;
+            text-align: end;
+        }
+    }
+}
+
+::ng-deep .feature-bar.mat-progress-bar {
+    height: 10px;
+    border-radius: 5px;
+}

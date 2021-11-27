@@ -15,6 +15,7 @@ import { UsersTableMapService } from './components/users-table/users-table-map.s
 import { RegistrationsChartComponent } from './components/charts/registrations-chart/registrations-chart.component';
 import { DashboardApiService } from './services/dashboard-api.service';
 import { CoursesChartComponent } from './components/charts/courses-chart/courses-chart.component';
+import { FeaturesUsageComponent } from './components/charts/features-usage/features-usage.component';
 
 
 
@@ -29,6 +30,7 @@ import { CoursesChartComponent } from './components/charts/courses-chart/courses
         UsersTableComponent,
         RegistrationsChartComponent,
         CoursesChartComponent,
+        FeaturesUsageComponent,
     ],
     imports: [
         CommonModule,

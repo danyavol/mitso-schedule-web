@@ -1,0 +1,38 @@
+<mat-card>
+    <mat-card-content [loading]="isLoading">
+        <h2 class="title">Использование сервисов</h2>
+        <div>
+            <div class="feature">
+                <h4 class="feature-title">Пользуется балансом - <strong>{{data?.withBalance ? data.withBalance.value + ' чел.' : null}}</strong></h4>
+                <div class="feature-bar-wrapper">
+                    <mat-progress-bar class="feature-bar" [value]="data?.withBalance.percentage*100 || 0"></mat-progress-bar>
+                    <strong class="feature-bar-value">{{data?.withBalance ? data?.withBalance.percentage*100 + '%' : ''}}</strong>
+                </div>
+            </div>
+    
+            <div class="feature">
+                <h4 class="feature-title">Увед. об изменении баланса - <strong>{{data?.balanceChange ? data.balanceChange.value + ' чел.' : null}}</strong></h4>
+                <div class="feature-bar-wrapper">
+                    <mat-progress-bar class="feature-bar" [value]="data?.balanceChange.percentage*100 || 0"></mat-progress-bar>
+                    <strong class="feature-bar-value">{{data?.balanceChange ? data?.balanceChange.percentage*100 + '%' : ''}}</strong>
+                </div>
+            </div>
+    
+            <div class="feature">
+                <h4 class="feature-title">Увед. об изменении расписания - <strong>{{data?.scheduleChange ? data.scheduleChange.value + ' чел.' : null}}</strong></h4>
+                <div class="feature-bar-wrapper">
+                    <mat-progress-bar class="feature-bar" [value]="data?.scheduleChange.percentage*100 || 0"></mat-progress-bar>
+                    <strong class="feature-bar-value">{{data?.scheduleChange ? data?.scheduleChange.percentage*100 + '%' : ''}}</strong>
+                </div>
+            </div>
+    
+            <div class="feature">
+                <h4 class="feature-title">Рассылка расписания на день - <strong>{{data?.sendDaySchedule ? data.sendDaySchedule.value + ' чел.' : null}}</strong></h4>
+                <div class="feature-bar-wrapper">
+                    <mat-progress-bar class="feature-bar" [value]="data?.sendDaySchedule.percentage*100 || 0"></mat-progress-bar>
+                    <strong class="feature-bar-value">{{data?.sendDaySchedule ? data?.sendDaySchedule.percentage*100 + '%' : ''}}</strong>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
