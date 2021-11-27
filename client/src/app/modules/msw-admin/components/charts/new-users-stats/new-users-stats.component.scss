@@ -1,0 +1,24 @@
+@use 'sass:map';
+@import '/src/styles/variables.scss';
+
+.title {
+    text-align: center;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-around;
+
+    .category {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .category-value {
+            font-weight: 600;
+            font-size: map.get($typography-config, title, font-size);
+            color: map.get($success-colors, 500);
+            min-height: 20px;
+        }      
+    }
+}

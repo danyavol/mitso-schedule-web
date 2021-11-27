@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-content>
+        <h2 class="title">Прирост пользователей</h2>
+        <div class="categories">
+            <div class="category">
+                <span class="category-value">{{data?.month ? '+' + data.month : null}}</span>
+                <span class="category-title">за месяц</span>
+            </div>
+            <div class="category">
+                <span class="category-value">{{data?.week ? '+' + data.week : null}}</span>
+                <span class="category-title">за неделю</span>
+            </div>
+            <div class="category">
+                <span class="category-value">{{data?.day ? '+' + data.day : null}}</span>
+                <span class="category-title">за день</span>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

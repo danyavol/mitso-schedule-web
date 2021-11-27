@@ -20,3 +20,9 @@ export interface FeatureData {
     value: number,
     percentage: number
 }
+
+export interface NewUsersData {
+    month: number,
+    week: number,
+    day: number
+}
