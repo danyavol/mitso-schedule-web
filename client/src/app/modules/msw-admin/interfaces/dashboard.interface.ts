@@ -26,3 +26,10 @@ export interface NewUsersData {
     week: number,
     day: number
 }
+
+export interface UsersActivityData {
+    total: number,
+    active: number,
+    halfActive: number,
+    inactive: number
+}

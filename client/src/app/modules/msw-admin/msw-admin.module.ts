@@ -17,6 +17,7 @@ import { DashboardApiService } from './services/dashboard-api.service';
 import { CoursesChartComponent } from './components/charts/courses-chart/courses-chart.component';
 import { FeaturesUsageComponent } from './components/charts/features-usage/features-usage.component';
 import { NewUsersStatsComponent } from './components/charts/new-users-stats/new-users-stats.component';
+import { UsersActivityComponent } from './components/charts/users-activity/users-activity.component';
 
 
 
@@ -33,6 +34,7 @@ import { NewUsersStatsComponent } from './components/charts/new-users-stats/new-
         CoursesChartComponent,
         FeaturesUsageComponent,
         NewUsersStatsComponent,
+        UsersActivityComponent,
     ],
     imports: [
         CommonModule,

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpService } from "@core/services/http.service";
 import { Observable } from "rxjs";
-import { CoursesChartData, FeaturesUsageData, NewUsersData, RegistrationChartData } from "../interfaces/dashboard.interface";
+import { CoursesChartData, FeaturesUsageData, NewUsersData, RegistrationChartData, UsersActivityData } from "../interfaces/dashboard.interface";
 
 @Injectable()
 export class DashboardApiService {
@@ -27,6 +27,11 @@ export class DashboardApiService {
 
     public getNewUsersData(): Observable<NewUsersData> {
         const path = '/api/stats/newUsers';
+        return this.http.get(path);
+    }
+
+    public getUsersActivity(): Observable<UsersActivityData> {
+        const path = '/api/stats/amount';
         return this.http.get(path);
     }
 }

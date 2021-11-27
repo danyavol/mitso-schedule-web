@@ -1,12 +1,25 @@
 @use 'sass:map';
 @import '/src/styles/variables.scss';
 
+.card {
+    box-sizing: border-box;
+    height: 170px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .title {
     text-align: center;
 }
 
 .categories {
     display: flex;
+    flex-grow: 1;
+    align-items: center;
     justify-content: space-around;
 
     .category {
