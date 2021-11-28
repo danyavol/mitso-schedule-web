@@ -15,4 +15,5 @@ export enum IconsEnum {
     success = 'success',
     refresh = 'refresh',
     tune = 'tune',
+    edit = 'edit'
 }

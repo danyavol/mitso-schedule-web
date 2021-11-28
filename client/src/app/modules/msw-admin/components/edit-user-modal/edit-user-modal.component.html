@@ -1,0 +1,55 @@
+<h2>Изменить пользователя</h2>
+
+<mat-dialog-content [formGroup]="formGroup" [loading]="isLoading">
+    <div class="form-group">
+        <mat-form-field class="compact">
+            <mat-label>Имя</mat-label>
+            <input matInput type="text" formControlName="firstName" readonly>
+        </mat-form-field>
+        <mat-form-field class="compact">
+            <mat-label>Фамилия</mat-label>
+            <input matInput type="text" formControlName="lastName" readonly>
+        </mat-form-field>
+        <mat-form-field class="compact">
+            <mat-label>Логин</mat-label>
+            <input matInput type="text" formControlName="username" readonly>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <mat-form-field class="compact">
+            <mat-label>Группа</mat-label>
+            <mat-select formControlName="groupNumber">
+                <mat-option [value]="null"></mat-option>
+                <mat-optgroup *ngFor="let groupedGroup of groupedGroups" [label]="groupedGroup.label">
+                    <mat-option *ngFor="let group of groupedGroup.items" [value]="group.group">{{group.group}}</mat-option>
+                </mat-optgroup>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <mat-form-field class="compact">
+            <mat-label>Лицевой счет</mat-label>
+            <input matInput type="text" formControlName="balanceNumber">
+        </mat-form-field>
+    </div>
+
+    <ng-container *ngIf="hasBalance || hasGroup" formGroupName="notifications">
+        <h3>Уведомления</h3>
+        <div class="form-group column">
+            <mat-checkbox *ngIf="hasBalance" formControlName="balanceChange">Об изменении баланса</mat-checkbox>
+            <ng-container *ngIf="hasGroup">
+                <mat-checkbox [checked]="user.notifications?.scheduleChange">Об изменении расписания</mat-checkbox>
+                <mat-checkbox [checked]="user.notifications?.daySchedule">Расписание на день</mat-checkbox>
+            </ng-container>
+        </div>
+    </ng-container>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div fxLayoutAlign="end center" fxFill>
+        <button mat-stroked-button color="primary" (click)="close()" cdk-focused>Отмена</button>
+        <button mat-raised-button color="primary" (click)="save()">Сохранить</button>
+    </div>
+</mat-dialog-actions>

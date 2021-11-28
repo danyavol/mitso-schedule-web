@@ -18,6 +18,7 @@ import { CoursesChartComponent } from './components/charts/courses-chart/courses
 import { FeaturesUsageComponent } from './components/charts/features-usage/features-usage.component';
 import { NewUsersStatsComponent } from './components/charts/new-users-stats/new-users-stats.component';
 import { UsersActivityComponent } from './components/charts/users-activity/users-activity.component';
+import { EditUserModalComponent } from './components/edit-user-modal/edit-user-modal.component';
 
 
 
@@ -35,6 +36,7 @@ import { UsersActivityComponent } from './components/charts/users-activity/users
         FeaturesUsageComponent,
         NewUsersStatsComponent,
         UsersActivityComponent,
+        EditUserModalComponent,
     ],
     imports: [
         CommonModule,

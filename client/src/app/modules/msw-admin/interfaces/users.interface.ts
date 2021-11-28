@@ -35,3 +35,13 @@ export enum TimeTypes {
     Relative = 'relative',
     Exactly = 'exactly'
 }
+
+export type GroupedGroupsFromApi = {
+    label: string,
+    items: GroupFromApi[]
+}[];
+
+export interface GroupFromApi {
+    group: string,
+    url: string
+}
