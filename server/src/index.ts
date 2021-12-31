@@ -4,7 +4,6 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import routes from './routes/routes';
-import { connectDatabase } from './database/database';
 
 const app = express();
 const PORT = process.env.PORT || 3080;  
@@ -21,12 +20,6 @@ app.use( cookieParser() )
 // Routes
 app.use(routes);
 
-// Database connection
-console.log('Connecting to database...');
-connectDatabase().then(() => {
-    console.log('Database connected');
-
-    app.listen(PORT, () => {
-        console.log(`Server listening on the port ${PORT}`);
-    });
+app.listen(PORT, () => {
+    console.log(`Server listening on the port ${PORT}`);
 });

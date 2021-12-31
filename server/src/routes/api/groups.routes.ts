@@ -1,5 +1,7 @@
+
+
 import { db } from "@database/database";
-import e, { Router } from "express";
+import { Router } from "express";
 
 const groups = Router();
 export default groups;
@@ -7,7 +9,7 @@ export default groups;
 
 groups.get('/', async (req, res) => {
     const { grouped } = req.query;
-    const allGroups = await db.GroupRepository().find();
+    const allGroups = await db.Group.find();
     
     allGroups
         .sort((a, b) => {

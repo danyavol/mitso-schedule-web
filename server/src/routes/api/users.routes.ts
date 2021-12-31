@@ -9,7 +9,7 @@ export default users;
 
 users.get('/', async (req, res) => {
     const { page, itemsPerPage, sortField, sortDirection } = req.query;
-    const allUsers = await db.UserRepository().find();
+    const allUsers = await db.User.find();
     sortData(allUsers, sortField as string, sortDirection as SortDirection);
     res.json( paginateData(allUsers, page, itemsPerPage) );
 });

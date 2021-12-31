@@ -1,54 +1,39 @@
-import path from "path";
-import { Connection, createConnections, getConnection, getMongoRepository } from "typeorm";
-import { MongoConnectionOptions } from "typeorm/driver/mongodb/MongoConnectionOptions";
-import Group from "./entities/data_db/group.entity";
-import User from "./entities/data_db/user.entity";
-import WeekSchedule from "./entities/schedule_db/schedule.entity";
+import mongoose from 'mongoose';
+import { User, userSchema } from './schemas/user.schema';
+import { Group, groupSchema } from './schemas/group.schema';
+import { Schedule, scheduleSchema } from './schemas/schedule.schema';
 
-const connectionOptions: MongoConnectionOptions = {
-    type: 'mongodb',
-    url: process.env.DB_URL,
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-};
 
-export function connectDatabase(): Promise<Connection[]> {
-    return createConnections([
-        { 
-            ...connectionOptions,
-            name: 'data',
-            database: 'data',
-            entities: [path.join(__dirname, 'entities/data_db/*.ts')]
-        },
-        { 
-            ...connectionOptions,
-            name: 'schedule',
-            database: 'schedule',
-            entities: [path.join(__dirname, 'entities/schedule_db/*.ts')]
-        }
-    ]);
-}
+export const data_conn = mongoose.createConnection(process.env.DB_URL, { dbName: "data" });
+export const lookup_conn = mongoose.createConnection(process.env.DB_URL, { dbName: "lookup" });
+export const schedule_conn = mongoose.createConnection(process.env.DB_URL, { dbName: "schedule" });
 
 export const db = {
-    UserRepository: () => getMongoRepository(User, 'data'),
-    GroupRepository: () => getMongoRepository(Group, 'data'),
-    ScheduleRepository: (collectionName: string) => {
-        const rep = getMongoRepository(WeekSchedule, 'schedule');
-        rep.metadata.tableName = collectionName;
-        return rep;
-    },
+    User: data_conn.model<User>('User', userSchema, 'users'),
+    Group: lookup_conn.model<Group>('Group', groupSchema, 'groups'),
+    Schedule: schedule_conn.model<Schedule>('Schedule', scheduleSchema)
 };
 
 
-// If the Node process ends, close the database connection
+const allConnections = [data_conn, lookup_conn, schedule_conn];
+
+allConnections.forEach(connection => {
+    const dbName = connection['$dbName'];
+    connection
+        .on('open', console.info.bind(console, `Database '${dbName}' connection: open`))
+        .on('close', console.info.bind(console, `Database '${dbName}' connection: close`))
+        .on('reconnected', console.info.bind(console, `Database '${dbName}' connection: reconnected`))
+});
+
+
+// If the Node process ends, close the Mongoose connection
 process.on('SIGINT', gracefulExit).on('SIGTERM', gracefulExit);
 
 function gracefulExit() {
-    Promise.all([
-        getConnection('data').close(),
-        getConnection('schedule').close()
-    ]).then(() => {
-        console.log('Database connection was closed before app termination');
-        process.exit(0);
+    let closedConnections = 0;
+    allConnections.forEach(connection => {
+        connection.close(() => {
+            if (++closedConnections >= allConnections.length) process.exit(0);
+        });
     });
 }

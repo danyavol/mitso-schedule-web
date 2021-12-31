@@ -1,13 +1,13 @@
 import { DAY, MONTH, TWO_MONTHS, WEEK } from "@constants/time.constant";
 import { db } from "@database/database";
-import User from "@database/entities/data_db/user.entity";
+import { User } from "@database/schemas/user.schema";
 import { Router } from "express";
 
 const stats = Router();
 export default stats;
 
 stats.get('/amount', async (req, res) => {
-    const allUsers = await db.UserRepository().find();
+    const allUsers = await db.User.find();
     const TODAY = Date.now();
     const uselessUser = (user: User) => (!user.myGroup && !user.balance);
 
@@ -32,7 +32,7 @@ stats.get('/amount', async (req, res) => {
 });
 
 stats.get('/amountByCourses', async (req, res) => {
-    const allUsers = await db.UserRepository().find();
+    const allUsers = await db.User.find();
 
     const result = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, total: 0};
     allUsers.forEach(user => {
@@ -48,7 +48,7 @@ stats.get('/amountByCourses', async (req, res) => {
 });
 
 stats.get('/servicesUsage', async (req, res) => {
-    const allUsers = await db.UserRepository().find();
+    const allUsers = await db.User.find();
     const usersWithBalance = allUsers.filter(u => !!u.balance?.number);
 	const usersWithMyGroup = allUsers.filter(u => !!u.myGroup?.group);
     const calcPercentage = (value: number, total: number): number => Math.round(value / total * 100) / 100;
@@ -77,7 +77,7 @@ stats.get('/servicesUsage', async (req, res) => {
 });
 
 stats.get('/newUsers', async (req, res) => {
-    const allUsers = await db.UserRepository().find();
+    const allUsers = await db.User.find();
     const TODAY = Date.now();
 
     const result = {
@@ -90,7 +90,7 @@ stats.get('/newUsers', async (req, res) => {
 });
 
 stats.get('/registrationChart', async (req, res) => {
-    const allUsers = await db.UserRepository().find();
+    const allUsers = await db.User.find();
 
     const dates = allUsers.map(u => {
         if (!u.createdAt) return null;
