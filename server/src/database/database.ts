@@ -11,7 +11,7 @@ export const schedule_conn = mongoose.createConnection(process.env.DB_URL, { dbN
 export const db = {
     User: data_conn.model<User>('User', userSchema, 'users'),
     Group: lookup_conn.model<Group>('Group', groupSchema, 'groups'),
-    Schedule: schedule_conn.model<Schedule>('Schedule', scheduleSchema)
+    Schedule: (collectionName: string) => schedule_conn.model<Schedule>('Schedule', scheduleSchema, collectionName)
 };
 
 
