@@ -3,7 +3,7 @@
     <div class="form-group settings-panel">
         <mat-form-field>
             <mat-label>Группа</mat-label>
-            <mat-select formControlName="group" placeholder="Выберите группу">
+            <mat-select formControlName="group">
                 <mat-optgroup *ngFor="let groupedGroup of vm.groups" [label]="groupedGroup.label">
                     <mat-option *ngFor="let group of groupedGroup.items" [value]="group.group">{{group.group}}</mat-option>
                 </mat-optgroup>
@@ -19,6 +19,6 @@
     </div>
 
     <div class="schedule" [loading]="isLoading">
-        {{vm.schedule | json}}
+        <schedule [lessons]="vm.schedule"></schedule>
     </div>
 </mat-card>

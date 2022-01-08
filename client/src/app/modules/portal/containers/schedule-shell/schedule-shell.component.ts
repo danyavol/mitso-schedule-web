@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { filter, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
 @Component({
-    selector: 'schedule',
+    selector: 'schedule-shell',
     templateUrl: './schedule-shell.component.html',
     styleUrls: ['./schedule-shell.component.scss'],
 })
@@ -35,6 +35,12 @@ export class ScheduleShellComponent implements OnInit {
         this.groups$ = this.portalApi.getGroups();
         this.weeks$ = this.getWeeksObs();
         this.schedule$ = this.getScheduleObs();
+
+        
+    }
+
+    ngAfterViewInit(): void {
+        this.form.get('group').setValue('1820 ИСИТ');
     }
 
     private getWeeksObs(): Observable<Week[]> {
@@ -44,6 +50,7 @@ export class ScheduleShellComponent implements OnInit {
             ),
             tap((data) => {
                 this.form.get('week').setValue(data[0]?.collection);
+                
             })
         );
     }

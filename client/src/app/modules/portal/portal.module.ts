@@ -7,6 +7,7 @@ import { SharedModule } from '@shared/shared.module';
 import { PortalTopbarComponent } from './components/portal-topbar/portal-topbar.component';
 import { PortalSidebarComponent } from './components/portal-sidebar/portal-sidebar.component';
 import { PortalApiService } from './services/portal-api.service';
+import { ScheduleComponent } from './components/schedule/schedule.component';
 
 
 
@@ -16,6 +17,7 @@ import { PortalApiService } from './services/portal-api.service';
         PortalTopbarComponent,
         PortalSidebarComponent,
         ScheduleShellComponent,
+        ScheduleComponent,
     ],
     imports: [
         CommonModule,
