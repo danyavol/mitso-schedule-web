@@ -9,6 +9,10 @@ const routes: Routes = [
     {
         path: 'msw-admin',
         loadChildren: () => import('@modules/msw-admin/msw-admin.module').then(m => m.MswAdminModule)
+    },
+    {
+        path: '',
+        loadChildren: () => import('@modules/portal/portal.module').then(m => m.PortalModule)
     }
 ];
 
