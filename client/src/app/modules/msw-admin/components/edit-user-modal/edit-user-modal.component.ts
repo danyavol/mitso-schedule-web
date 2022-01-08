@@ -1,8 +1,9 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { GroupedGroupsFromApi, GroupFromApi, UserFromApi } from '@modules/msw-admin/interfaces/users.interface';
+import { UserFromApi } from '@modules/msw-admin/interfaces/users.interface';
 import { UsersApiService } from '@modules/msw-admin/services/users-api.service';
+import { GroupedGroupsFromApi } from '@shared/interfaces/lookup.interface';
 import { Subject } from 'rxjs';
 import { finalize, startWith, takeUntil } from 'rxjs/operators';
 

@@ -1,1 +1,24 @@
-<p>schedule works!</p>
+<mat-card *ngIf="{ groups: groups$ | async, weeks: weeks$ | async, schedule: schedule$ | async} as vm" [formGroup]="form">
+
+    <div class="form-group settings-panel">
+        <mat-form-field>
+            <mat-label>Группа</mat-label>
+            <mat-select formControlName="group" placeholder="Выберите группу">
+                <mat-optgroup *ngFor="let groupedGroup of vm.groups" [label]="groupedGroup.label">
+                    <mat-option *ngFor="let group of groupedGroup.items" [value]="group.group">{{group.group}}</mat-option>
+                </mat-optgroup>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Неделя</mat-label>
+            <mat-select formControlName="week">
+                <mat-option *ngFor="let week of vm.weeks" [value]="week.collection">{{week.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="schedule" [loading]="isLoading">
+        {{vm.schedule | json}}
+    </div>
+</mat-card>

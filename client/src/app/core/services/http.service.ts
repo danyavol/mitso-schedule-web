@@ -17,9 +17,11 @@ export class HttpService {
     ) {}
 
     public get(path: string, queryParams: any = null, options: any = this.getDefaultRequestOptions()): Observable<any> {
-        const fullPath: string = this.getPathWithData(path, queryParams);
+        if (queryParams) {
+            options.params = queryParams;
+        }
 
-        return this.http.get(this.apiUrl + fullPath, options)
+        return this.http.get(this.apiUrl + path, options)
             .pipe(
                 catchError(this.handleError.bind(this)),
             );
