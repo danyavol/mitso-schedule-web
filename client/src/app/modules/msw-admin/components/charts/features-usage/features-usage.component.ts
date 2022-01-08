@@ -39,4 +39,9 @@ export class FeaturesUsageComponent implements OnInit, OnDestroy {
             });
     }
 
+    public getPercentage(num: number): string {
+        if (num == null) return '';
+        return Math.round(num * 100) + '%';
+    }
+
 }

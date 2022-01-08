@@ -11,7 +11,7 @@ export default apiRoutes;
 
 
 apiRoutes.use('/users', adminOnly, users);
+apiRoutes.use('/stats', adminOnly, stats);
 apiRoutes.use('/groups', groups);
-apiRoutes.use('/stats', stats);
 apiRoutes.use('/auth', auth);
 apiRoutes.use('/schedule', schedule);
