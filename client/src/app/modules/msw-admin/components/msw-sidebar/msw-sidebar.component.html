@@ -1,4 +1,3 @@
-
 <div class="sidebar" fxLayout="column">  
 
     <button mat-button class="menu-button" routerLink="/msw-admin/dashboard" routerLinkActive="active" (click)="onElementClick()">
@@ -10,16 +9,16 @@
         Пользователи
     </button>
 
-    <mat-divider></mat-divider>
-
     <button mat-button class="menu-button" (click)="onElementClick()">
         <mat-icon class="menu-icon" svgIcon="settings"></mat-icon>
         Настройки
     </button>
 
-    <button mat-button class="menu-button" routerLink="/style-guide" (click)="onElementClick()">
-        <mat-icon class="menu-icon" svgIcon="style"></mat-icon>
-        Style Guide
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/" (click)="onElementClick()">
+        <mat-icon class="menu-icon" svgIcon="arrow_back"></mat-icon>
+        Назад на главную
     </button>
 
 

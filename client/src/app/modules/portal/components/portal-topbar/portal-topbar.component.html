@@ -1,0 +1,23 @@
+<mat-toolbar *ngIf="{ isMobileView: isMobileView$ | async } as vm" [class.mobile-view]="vm.isMobileView">
+
+    <ng-container *ngIf="vm.isMobileView; else desktopViewTemplate">
+        <button mat-icon-button color="primary" *ngIf="!isSidenavOpened" (click)="sidenav.open()">
+            <mat-icon svgIcon="menu"></mat-icon>
+        </button>
+        <button mat-icon-button color="primary" *ngIf="isSidenavOpened" (click)="sidenav.close()">
+            <mat-icon svgIcon="close"></mat-icon>
+        </button>
+
+        <h3>
+            <ng-container *ngIf="url === '/schedule'">Расписание</ng-container>
+        </h3>
+    </ng-container>
+
+    <ng-template #desktopViewTemplate>
+        <button mat-button [class.mat-flat-button]="isRouteActive('/schedule')" color="primary">
+            <mat-icon svgIcon="calendar"></mat-icon>
+            Расписание
+        </button>
+    </ng-template>
+
+</mat-toolbar>

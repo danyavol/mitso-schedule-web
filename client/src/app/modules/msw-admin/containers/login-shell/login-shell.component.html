@@ -14,7 +14,11 @@
                         <ng-container *ngIf="showServerError">{{serverError}}</ng-container>
                     </mat-error>
                 </mat-form-field>
-                <div class="submit-button" fxLayoutAlign="end center">
+                <div fxLayoutAlign="space-between center">
+                    <button mat-stroked-button color="primary" class="menu-button" routerLink="/">
+                        <mat-icon class="menu-icon" svgIcon="arrow_back"></mat-icon>
+                        Назад
+                    </button>
                     <button mat-flat-button color="primary" (click)="submit()" [loading]="isLoading">Войти</button>
                 </div>
             </div>

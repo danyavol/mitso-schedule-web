@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'portal',
     templateUrl: './portal.component.html',
     styleUrls: ['./portal.component.scss']
 })
-export class PortalComponent implements OnInit {
-
-    constructor() { }
-
-    ngOnInit(): void {
-    }
+export class PortalComponent {
 
 }

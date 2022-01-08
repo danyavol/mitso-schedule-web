@@ -1,0 +1,16 @@
+@import '/src/styles/variables.scss';
+
+
+.mat-toolbar {
+    background-color: $topbar-bg;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    &.mobile-view {
+        justify-content: start;
+        gap: 8px;
+    }
+}

@@ -1,2 +1,17 @@
-<p>portal works!</p>
-<router-outlet></router-outlet>
+<div class="topbar">
+    <portal-topbar [sidenav]="sidenav"></portal-topbar>
+</div>
+
+<mat-sidenav-container>
+
+    <mat-sidenav class="sidebar" #sidenav mode="over" [autoFocus]="false">
+        <portal-sidebar [sidenav]="sidenav"></portal-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="main-container-wrapper">
+        <div class="main-container">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
