@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Lesson, Week } from '@modules/portal/interfaces/portal.interface';
 import { PortalApiService } from '@modules/portal/services/portal-api.service';
 import { GroupedGroupsFromApi } from '@shared/interfaces/lookup.interface';
-import { Observable } from 'rxjs';
-import { filter, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
+import { filter, map, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
 @Component({
     selector: 'schedule-shell',
@@ -14,6 +14,7 @@ import { filter, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 export class ScheduleShellComponent implements OnInit {
 
     public form: FormGroup = this.fb.group({
+        groupSearch: '',
         group: null,
         week: null
     });
@@ -22,6 +23,7 @@ export class ScheduleShellComponent implements OnInit {
     public schedule$: Observable<Lesson[]>;
     public isLoading = false;
 
+    private groupSearchChange$ = this.form.get('groupSearch').valueChanges;
     private groupChange$ = this.form.get('group').valueChanges;
     private weekChange$ = this.form.get('week').valueChanges;
 
@@ -32,15 +34,30 @@ export class ScheduleShellComponent implements OnInit {
     
 
     ngOnInit(): void {
-        this.groups$ = this.portalApi.getGroups();
+        this.groups$ = this.getGroupsObs();
         this.weeks$ = this.getWeeksObs();
         this.schedule$ = this.getScheduleObs();
-
-        
     }
 
-    ngAfterViewInit(): void {
-        this.form.get('group').setValue('1820 ИСИТ');
+    private getGroupsObs(): Observable<GroupedGroupsFromApi> {
+        return combineLatest([
+            this.groupSearchChange$.pipe(startWith(this.form.get('groupSearch').value)),
+            this.portalApi.getGroups()
+        ]).pipe(
+            map(([search, courses]) => {
+                const result = [];
+                courses.forEach(course => {
+                    const filteredGroups = course.items.filter(group => group.group.includes(search));
+                    if (filteredGroups.length) {
+                        result.push({
+                            label: course.label,
+                            items: filteredGroups
+                        });
+                    }
+                });
+                return result;
+            })
+        );
     }
 
     private getWeeksObs(): Observable<Week[]> {

@@ -27,6 +27,7 @@ import { ValidationErrorComponent } from './components/validation-error/validati
 import { AdaptiveViewDirective } from './directives/adaptive-view.directive';
 import { LoadingDirective } from './directives/loading.directive';
 import { MswDatePipe } from './pipes/msw-date.pipe';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 
 const NG_MATERIALS = [
@@ -69,6 +70,7 @@ const NG_MODULES = [
         ...NG_MATERIALS,
         ...NG_MODULES,
         NgApexchartsModule,
+        NgxMatSelectSearchModule,
     ],
     exports: [
         CommonModule,
@@ -80,6 +82,7 @@ const NG_MODULES = [
         MswPaginator,
         AdaptiveViewDirective,
         NgApexchartsModule,
+        NgxMatSelectSearchModule,
     ],
     providers: [
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline', floatLabel: 'auto' } },

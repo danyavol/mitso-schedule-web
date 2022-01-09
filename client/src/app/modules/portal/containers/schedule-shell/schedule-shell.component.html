@@ -4,6 +4,15 @@
         <mat-form-field>
             <mat-label>Группа</mat-label>
             <mat-select formControlName="group">
+                <mat-option>
+                    <ngx-mat-select-search
+                        formControlName="groupSearch"
+                        placeholderLabel="Введите группу..."
+                        noEntriesFoundLabel="Группа не найдена"
+                    >
+                        <mat-icon ngxMatSelectSearchClear svgIcon="close"></mat-icon>
+                    </ngx-mat-select-search>
+                </mat-option>
                 <mat-optgroup *ngFor="let groupedGroup of vm.groups" [label]="groupedGroup.label">
                     <mat-option *ngFor="let group of groupedGroup.items" [value]="group.group">{{group.group}}</mat-option>
                 </mat-optgroup>

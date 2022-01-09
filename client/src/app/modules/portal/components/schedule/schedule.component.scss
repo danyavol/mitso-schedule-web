@@ -22,6 +22,7 @@
 
 @media (max-width: 960px) {
     .title {
+        font-size: 18px;
         margin: 0 0 20px 0;
 
         .group-word {
@@ -91,7 +92,7 @@
                         color: $muted-color;
                     }
                 }
-                
+
                 .classroom {
                     border-radius: 10px;
                     font-size: 16px;
