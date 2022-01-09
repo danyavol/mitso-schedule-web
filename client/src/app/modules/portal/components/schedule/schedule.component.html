@@ -1,19 +1,27 @@
 <div *ngIf="lessons; else noLessonsTemplate">
     <div class="title">
-        <span class="title-group">Группа <strong>{{mappedLessons.title.group}}</strong></span>
+        <span class="title-group"><span class="group-word">Группа</span><strong>{{mappedLessons.title.group}}</strong></span>
         <span class="title-week">{{mappedLessons.title.week}}</span>
     </div>
     <div class="schedule">
         <div class="day" *ngFor="let day of mappedLessons.days">
             <div class="day-title">
-                {{day.day}} {{day.date}} 
+                <span class="day-of-week">{{day.day}}</span>
+                <span class="date">{{day.date}}</span>
             </div>
             <div class="lessons">
                 <div class="lesson" *ngFor="let lesson of day.lessons">
-                    {{lesson.time}} | {{lesson.classRoom}} |
-                    {{lesson.lessonName}}
-                    ({{lesson.lessonType}}) |
-                    {{lesson.teachers.join(', ')}}
+                    <span class="time">{{lesson.time}}</span>
+                    <div class="main-info">
+                        <div>
+                            <span class="type">{{lesson.lessonType}}</span>
+                            <span class="name">{{lesson.lessonName}}</span>
+                        </div>
+                        <div>
+                            <span class="teachers">{{lesson.teachers.join(', ')}}</span>
+                        </div>
+                    </div>
+                    <span class="classroom">{{lesson.classRoom}}</span>
                 </div>
             </div>
         </div>

@@ -1,3 +1,6 @@
+@use 'sass:map';
+@import '/src/styles/variables.scss';
+
 .no-lessons {
     text-align: center;
 }
@@ -7,4 +10,93 @@
     justify-content: space-between;
     font-size: 20px;
     margin: 0 20px 20px 20px;
+
+    .group-word {
+        margin-right: 5px;
+    }
+
+    .title-week {
+        text-align: end;
+    }
+}
+
+@media (max-width: 960px) {
+    .title {
+        margin: 0 0 20px 0;
+
+        .group-word {
+            display: none;
+        }
+    }
+}
+
+
+
+.schedule {
+    .day {
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+
+        .day-title {
+            display: flex;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            color: map.get($info-colors, 900);
+            background-color: map.get($info-colors, 100);
+            padding: 5px 20px;
+            border-radius: 10px 10px 0 0;
+
+            .day-of-week {
+                flex-basis: 120px;
+            }
+
+            .date {
+                text-align: end;
+            }
+        }
+
+        .lessons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+
+            .lesson {
+                display: flex;
+                gap: 15px;
+
+                .time {
+                    font-size: 16px;
+                    flex-basis: 95px;
+                }
+
+                .main-info {
+                    flex-grow: 1;
+
+                    .type {
+                        margin-right: 10px;
+                        padding: 2px 6px;
+                        background-color: map.get($accent-palette, 400);
+                        border-radius: 10px;
+                        margin-right: 10px;
+                    }
+                    .name {
+                        font-weight: 600;
+                        font-size: 16px;
+                    }
+                    
+                    .teachers {
+                        color: $muted-color;
+                    }
+                }
+                
+                .classroom {
+                    border-radius: 10px;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
 }
