@@ -73,6 +73,12 @@
                     flex-basis: 95px;
                 }
 
+                @media (max-width: 960px) {
+                    .time {
+                        flex-basis: 0;
+                    }
+                }
+
                 .main-info {
                     flex-grow: 1;
 
