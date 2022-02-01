@@ -4,6 +4,7 @@ import auth from "./auth.routes";
 import groups from "./groups.routes";
 import schedule from "./schedule.routes";
 import stats from "./stats.routes";
+import teachers from "./teachers.routes";
 import users from "./users.routes";
 
 const apiRoutes = Router();
@@ -15,3 +16,4 @@ apiRoutes.use('/stats', adminOnly, stats);
 apiRoutes.use('/groups', groups);
 apiRoutes.use('/auth', auth);
 apiRoutes.use('/schedule', schedule);
+apiRoutes.use('/teachers', teachers);

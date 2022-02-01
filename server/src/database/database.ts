@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import { User, userSchema } from './schemas/user.schema';
 import { Group, groupSchema } from './schemas/group.schema';
 import { Schedule, scheduleSchema } from './schemas/schedule.schema';
+import { Teacher, teacherSchema } from './schemas/teacher.schema';
 
 
 export const data_conn = mongoose.createConnection(process.env.DB_URL, { dbName: "data" });
@@ -11,6 +12,7 @@ export const schedule_conn = mongoose.createConnection(process.env.DB_URL, { dbN
 export const db = {
     User: data_conn.model<User>('User', userSchema, 'users'),
     Group: lookup_conn.model<Group>('Group', groupSchema, 'groups'),
+    Teacher: lookup_conn.model<Teacher>('Teacher', teacherSchema, 'teachers'),
     Schedule: (collectionName: string) => schedule_conn.model<Schedule>('Schedule', scheduleSchema, collectionName)
 };
 
