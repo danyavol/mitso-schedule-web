@@ -16,4 +16,5 @@ export class LookupApiService {
     public groupedGroups$: Observable<GroupedGroupsFromApi> = this.http.get('/api/groups', { grouped: true }).pipe(
         shareReplay(1)
     );
+    
 }
