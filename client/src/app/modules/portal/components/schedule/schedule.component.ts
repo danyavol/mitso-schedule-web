@@ -9,7 +9,7 @@ interface MappedLessons {
         lessons: Lesson[]
     }[]
 }
-
+// TODO: Add possibility to show teachers schedule
 @Component({
     selector: 'schedule',
     templateUrl: './schedule.component.html',

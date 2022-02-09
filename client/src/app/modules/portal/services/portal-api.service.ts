@@ -19,7 +19,7 @@ export class PortalApiService {
 
     public getAvailableWeeks(group?: string): Observable<Week[]> {
         const path = '/api/schedule/weeks';
-        return this.http.get(path, { group });
+        return this.http.get(path, group ? { group } : null);
     }
 
     public getSchedule(collection: string, group: string): Observable<Lesson[]> {
@@ -29,6 +29,12 @@ export class PortalApiService {
 
     public getTeachers(): Observable<string[]> {
         const path = `/api/teachers`;
+        return this.http.get(path);
+    }
+
+    public getTeachersSchedule(collection: string, teacher: string): Observable<Lesson[]> {
+        // TODO: Update endpoint
+        const path = `/api/schedule/${collection}/1820 ИСИТ`;
         return this.http.get(path);
     }
 

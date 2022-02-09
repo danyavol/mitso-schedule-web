@@ -1,1 +1,30 @@
-<p>teachers-shell works!</p>
+<mat-card *ngIf="{ teachers: teachers$ | async, weeks: weeks$ | async, lessons: lessons$ | async} as vm" [formGroup]="form">
+    <div class="form-group settings-panel">
+        <mat-form-field>
+            <mat-label>Преподаватель</mat-label>
+            <mat-select formControlName="teacher">
+                <mat-option>
+                    <ngx-mat-select-search
+                        formControlName="teacherSearch"
+                        placeholderLabel="Введите ФИО преподавателя..."
+                        noEntriesFoundLabel="Преподаватель не найдена"
+                    >
+                        <mat-icon ngxMatSelectSearchClear svgIcon="close"></mat-icon>
+                    </ngx-mat-select-search>
+                </mat-option>
+                <mat-option *ngFor="let teacher of vm.teachers" [value]="teacher">{{teacher}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Неделя</mat-label>
+            <mat-select formControlName="week">
+                <mat-option *ngFor="let week of vm.weeks" [value]="week.collection">{{week.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="schedule" [loading]="isLoading">
+        <schedule [lessons]="vm.lessons"></schedule>
+    </div>
+</mat-card>
