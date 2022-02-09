@@ -27,4 +27,9 @@ export class PortalApiService {
         return this.http.get(path);
     }
 
+    public getTeachers(): Observable<string[]> {
+        const path = `/api/teachers`;
+        return this.http.get(path);
+    }
+
 }

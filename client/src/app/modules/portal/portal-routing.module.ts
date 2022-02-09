@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ScheduleShellComponent } from './containers/schedule-shell/schedule-shell.component';
+import { TeachersShellComponent } from './containers/teachers-shell/teachers-shell.component';
 import { PortalComponent } from './portal.component';
 
 const routes: Routes = [
@@ -11,6 +12,10 @@ const routes: Routes = [
             {
                 path: 'schedule',
                 component: ScheduleShellComponent
+            },
+            {
+                path: 'teachers',
+                component: TeachersShellComponent
             },
             { path: '', redirectTo: 'schedule', pathMatch: 'full' }
         ]

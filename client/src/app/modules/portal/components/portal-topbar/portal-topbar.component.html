@@ -10,13 +10,18 @@
 
         <h3>
             <ng-container *ngIf="url === '/schedule'">Расписание</ng-container>
+            <ng-container *ngIf="url === '/teachers'">Преподаватели</ng-container>
         </h3>
     </ng-container>
 
     <ng-template #desktopViewTemplate>
-        <button mat-button [class.mat-flat-button]="isRouteActive('/schedule')" color="primary">
+        <button mat-button routerLink="/schedule" [class.mat-flat-button]="isRouteActive('/schedule')" color="primary">
             <mat-icon svgIcon="calendar"></mat-icon>
             Расписание
+        </button>
+        <button mat-button routerLink="/teachers" [class.mat-flat-button]="isRouteActive('/teachers')" color="primary">
+            <mat-icon svgIcon="people"></mat-icon>
+            Преподаватели
         </button>
     </ng-template>
 

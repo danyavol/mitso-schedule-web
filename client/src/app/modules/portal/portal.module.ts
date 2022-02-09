@@ -8,6 +8,7 @@ import { PortalTopbarComponent } from './components/portal-topbar/portal-topbar.
 import { PortalSidebarComponent } from './components/portal-sidebar/portal-sidebar.component';
 import { PortalApiService } from './services/portal-api.service';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import { TeachersShellComponent } from './containers/teachers-shell/teachers-shell.component';
 
 
 
@@ -18,6 +19,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
         PortalSidebarComponent,
         ScheduleShellComponent,
         ScheduleComponent,
+        TeachersShellComponent,
     ],
     imports: [
         CommonModule,
