@@ -32,9 +32,9 @@ export class TeachersShellComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this.lessons$ = this.getScheduleObs();
         this.teachers$ = this.getTeachersObs();
         this.weeks$ = this.getWeeksObs();
-        this.lessons$ = this.getScheduleObs();
     }
 
     private getTeachersObs(): Observable<string[]> {

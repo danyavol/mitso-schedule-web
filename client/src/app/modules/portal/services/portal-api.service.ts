@@ -18,8 +18,10 @@ export class PortalApiService {
     }
 
     public getAvailableWeeks(group?: string): Observable<Week[]> {
+        if (!group) return this.lookupApi.allWeeks$;
+
         const path = '/api/schedule/weeks';
-        return this.http.get(path, group ? { group } : null);
+        return this.http.get(path, { group });
     }
 
     public getSchedule(collection: string, group: string): Observable<Lesson[]> {
@@ -28,13 +30,11 @@ export class PortalApiService {
     }
 
     public getTeachers(): Observable<string[]> {
-        const path = `/api/teachers`;
-        return this.http.get(path);
+        return this.lookupApi.allTeachers$;
     }
 
     public getTeachersSchedule(collection: string, teacher: string): Observable<Lesson[]> {
-        // TODO: Update endpoint
-        const path = `/api/schedule/${collection}/1820 ИСИТ`;
+        const path = `/api/teachers/${collection}/${teacher}`;
         return this.http.get(path);
     }
 
