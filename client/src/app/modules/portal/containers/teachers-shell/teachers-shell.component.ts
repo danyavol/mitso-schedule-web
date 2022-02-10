@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Lesson, Week } from '@modules/portal/interfaces/portal.interface';
+import { Lesson, ScheduleType, Week } from '@modules/portal/interfaces/portal.interface';
 import { PortalApiService } from '@modules/portal/services/portal-api.service';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, startWith, switchMap, tap } from 'rxjs/operators';
@@ -21,6 +21,7 @@ export class TeachersShellComponent implements OnInit {
     public weeks$: Observable<Week[]>;
     public lessons$: Observable<Lesson[]>;
     public isLoading = false;
+    public ScheduleType = ScheduleType;
 
     private teacherSearchChange$ = this.form.get('teacherSearch').valueChanges;
     private teacherChange$ = this.form.get('teacher').valueChanges;

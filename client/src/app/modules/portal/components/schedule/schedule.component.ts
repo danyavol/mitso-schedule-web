@@ -1,15 +1,33 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { Lesson } from '@modules/portal/interfaces/portal.interface';
+import { Lesson, ScheduleType } from '@modules/portal/interfaces/portal.interface';
 
-interface MappedLessons {
-    title: { group: string, week: string };
+interface MappedSchedule {
+    title: string;
+    subtitle: string;
     days: {
         date: string,
         day: string,
-        lessons: Lesson[]
+        lessons: MappedLesson[]
     }[]
 }
-// TODO: Add possibility to show teachers schedule
+
+interface MappedLesson {
+    time: string;
+    lessonType: string;
+    lessonName: string;
+    classRoom: string;
+    subtitle: string;
+}
+
+const PLACEHOLDER_MSG = {
+    [ScheduleType.Group]: 'Выберите группу и неделю, чтобы посмотреть расписание',
+    [ScheduleType.Teacher]: 'Выберите преподавателя и неделю, чтобы посмотреть его расписание'
+};
+
+const ERROR_MSG = {
+    [ScheduleType.Group]: 'Расписание данной группы не найдено',
+    [ScheduleType.Teacher]: 'Расписание преподавателя на выбранную неделю не найдено'
+};
 @Component({
     selector: 'schedule',
     templateUrl: './schedule.component.html',
@@ -17,33 +35,53 @@ interface MappedLessons {
 })
 export class ScheduleComponent implements OnChanges {
     @Input() lessons: Lesson[];
+    @Input() type: ScheduleType = ScheduleType.Group;
+    @Input() isError: boolean = false;
     
-    public mappedLessons: MappedLessons;
+    public mappedSchedule: MappedSchedule;
+    public PLACEHOLDER_MSG = PLACEHOLDER_MSG;
+    public ERROR_MSG = ERROR_MSG;
 
     ngOnChanges(): void {
-        this.mappedLessons = this.mapLessons(this.lessons);
+        switch(this.type) {
+            case ScheduleType.Group:
+                this.mappedSchedule = this.mapGroupSchedule(this.lessons);
+                break;
+            case ScheduleType.Teacher:
+                this.mappedSchedule = this.mapTeacherSchedule(this.lessons);
+                break;
+        }
     }
 
-    public mapLessons(lessons: Lesson[]): MappedLessons {
-        const result: MappedLessons = {
-            title: null,
+    private mapTeacherSchedule(lessons: Lesson[]): MappedSchedule {
+        const result: MappedSchedule = {
+            title: '',
+            subtitle: '',
+            days: []
+        };
+        // TODO: Implement
+        return result;
+    }
+
+    private mapGroupSchedule(lessons: Lesson[]): MappedSchedule {
+        const result: MappedSchedule = {
+            title: '',
+            subtitle: '',
             days: []
         };
         if (lessons?.length) {
-            result.title = {
-                group: lessons[0].group,
-                week: lessons[0].week
-            };
+            result.title = lessons[0].group;
+            result.subtitle = lessons[0].week;
 
             lessons.reduce((accumulator, lesson, index) => {
                 if (lesson.date === accumulator.date) {
-                    accumulator.lessons.push(lesson);
+                    accumulator.lessons.push(this.mapGroupLesson(lesson));
                 } else {
                     result.days.push(accumulator);
                     accumulator = {
                         date: lesson.date,
                         day: lesson.day,
-                        lessons: [lesson]
+                        lessons: [this.mapGroupLesson(lesson)]
                     };
                 }
 
@@ -59,6 +97,16 @@ export class ScheduleComponent implements OnChanges {
             });
         }
         return result;
+    }
+
+    private mapGroupLesson(lesson: Lesson): MappedLesson {
+        return {
+            lessonName: lesson.lessonName,
+            classRoom: lesson.classRoom,
+            lessonType: lesson.lessonType,
+            subtitle: lesson.teachers.join(', '),
+            time: lesson.time
+        };
     }
 
 }

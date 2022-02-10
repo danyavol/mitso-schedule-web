@@ -14,3 +14,8 @@ export interface Lesson {
     classRoom: string;
     time: string;
 }
+
+export enum ScheduleType {
+    Group,
+    Teacher
+}

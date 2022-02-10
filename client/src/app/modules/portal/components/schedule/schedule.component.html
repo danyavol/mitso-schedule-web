@@ -1,10 +1,10 @@
-<div *ngIf="lessons; else noLessonsTemplate">
+<div *ngIf="lessons?.length; else noLessonsTemplate">
     <div class="title">
-        <span class="title-group"><span class="group-word">Группа</span><strong>{{mappedLessons.title.group}}</strong></span>
-        <span class="title-week">{{mappedLessons.title.week}}</span>
+        <span class="main-title"><span class="group-word">Группа</span><strong>{{mappedSchedule.title}}</strong></span>
+        <span class="subtitle">{{mappedSchedule.subtitle}}</span>
     </div>
     <div class="schedule">
-        <div class="day" *ngFor="let day of mappedLessons.days">
+        <div class="day" *ngFor="let day of mappedSchedule.days">
             <div class="day-title">
                 <span class="day-of-week">{{day.day}}</span>
                 <span class="date">{{day.date}}</span>
@@ -18,7 +18,7 @@
                             <span class="name">{{lesson.lessonName}}</span>
                         </div>
                         <div>
-                            <span class="teachers">{{lesson.teachers.join(', ')}}</span>
+                            <span class="subtitle">{{lesson.subtitle}}</span>
                         </div>
                     </div>
                     <span class="classroom">{{lesson.classRoom}}</span>
@@ -28,5 +28,5 @@
     </div>
 </div>
 <ng-template #noLessonsTemplate>
-    <h3 class="no-lessons">Выберите группу и неделю, чтобы посмотреть расписание</h3>
+    <h3 class="no-lessons">{{isError ? ERROR_MSG[type] : PLACEHOLDER_MSG[type]}}</h3>
 </ng-template>

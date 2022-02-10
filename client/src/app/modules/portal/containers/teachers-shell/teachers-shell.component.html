@@ -25,6 +25,6 @@
     </div>
 
     <div class="schedule" [loading]="isLoading">
-        <schedule [lessons]="vm.lessons"></schedule>
+        <schedule [lessons]="vm.lessons" [type]="ScheduleType.Teacher" [isError]="vm.lessons && !vm.lessons.length"></schedule>
     </div>
 </mat-card>
