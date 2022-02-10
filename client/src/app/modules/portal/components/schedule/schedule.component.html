@@ -1,6 +1,9 @@
 <div *ngIf="lessons?.length; else noLessonsTemplate">
     <div class="title">
-        <span class="main-title"><span class="group-word">Группа</span><strong>{{mappedSchedule.title}}</strong></span>
+        <span class="main-title">
+            <span class="group-word" *ngIf="type === ScheduleType.Group">Группа</span>
+            <strong>{{mappedSchedule.title}}</strong>
+        </span>
         <span class="subtitle">{{mappedSchedule.subtitle}}</span>
     </div>
     <div class="schedule">

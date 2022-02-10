@@ -4,7 +4,7 @@ import { Lesson, Week } from '@modules/portal/interfaces/portal.interface';
 import { PortalApiService } from '@modules/portal/services/portal-api.service';
 import { GroupedGroupsFromApi } from '@shared/interfaces/lookup.interface';
 import { combineLatest, Observable } from 'rxjs';
-import { filter, map, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, map, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
 @Component({
     selector: 'schedule-shell',
@@ -62,6 +62,8 @@ export class ScheduleShellComponent implements OnInit {
 
     private getWeeksObs(): Observable<Week[]> {
         return this.groupChange$.pipe(
+            debounceTime(200),
+            distinctUntilChanged((a, b) => a === b),
             switchMap((group) =>
                 this.portalApi.getAvailableWeeks(group)
             ),
@@ -76,6 +78,8 @@ export class ScheduleShellComponent implements OnInit {
         return this.weekChange$.pipe(
             withLatestFrom(this.groupChange$),
             filter(([collection]) => !!collection),
+            debounceTime(200),
+            distinctUntilChanged((a, b) => a[0] === b[0]),
             tap(() => this.isLoading = true),
             switchMap(([collection, group]) => 
                 this.portalApi.getSchedule(collection, group)

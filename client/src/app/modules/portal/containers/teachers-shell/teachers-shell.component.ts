@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Lesson, ScheduleType, Week } from '@modules/portal/interfaces/portal.interface';
 import { PortalApiService } from '@modules/portal/services/portal-api.service';
 import { combineLatest, Observable } from 'rxjs';
-import { filter, map, startWith, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, delay, distinctUntilChanged, filter, map, startWith, switchMap, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'teachers-shell',
@@ -22,9 +22,9 @@ export class TeachersShellComponent implements OnInit {
     public lessons$: Observable<Lesson[]>;
     public isLoading = false;
     public ScheduleType = ScheduleType;
+    public teacherChange$ = this.form.get('teacher').valueChanges;
 
     private teacherSearchChange$ = this.form.get('teacherSearch').valueChanges;
-    private teacherChange$ = this.form.get('teacher').valueChanges;
     private weekChange$ = this.form.get('week').valueChanges;
 
     constructor(
@@ -63,6 +63,9 @@ export class TeachersShellComponent implements OnInit {
             this.weekChange$,
             this.teacherChange$
         ]).pipe(
+            delay(0), // Needed to rerender dropdown after option select
+            debounceTime(200),
+            distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
             filter(([collection]) => !!collection),
             tap(() => this.isLoading = true),
             switchMap(([collection, teacher]) => 

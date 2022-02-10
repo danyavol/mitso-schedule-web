@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Lesson, ScheduleType } from '@modules/portal/interfaces/portal.interface';
 
 interface MappedSchedule {
@@ -36,20 +36,24 @@ const ERROR_MSG = {
 export class ScheduleComponent implements OnChanges {
     @Input() lessons: Lesson[];
     @Input() type: ScheduleType = ScheduleType.Group;
+    @Input() teacherName: string;
     @Input() isError: boolean = false;
     
     public mappedSchedule: MappedSchedule;
     public PLACEHOLDER_MSG = PLACEHOLDER_MSG;
     public ERROR_MSG = ERROR_MSG;
+    public ScheduleType = ScheduleType;
 
-    ngOnChanges(): void {
-        switch(this.type) {
-            case ScheduleType.Group:
-                this.mappedSchedule = this.mapGroupSchedule(this.lessons);
-                break;
-            case ScheduleType.Teacher:
-                this.mappedSchedule = this.mapTeacherSchedule(this.lessons);
-                break;
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.lessons?.currentValue) {
+            switch(this.type) {
+                case ScheduleType.Group:
+                    this.mappedSchedule = this.mapGroupSchedule(this.lessons);
+                    break;
+                case ScheduleType.Teacher:
+                    this.mappedSchedule = this.mapTeacherSchedule(this.lessons);
+                    break;
+            }
         }
     }
 
@@ -59,7 +63,40 @@ export class ScheduleComponent implements OnChanges {
             subtitle: '',
             days: []
         };
-        // TODO: Implement
+        if (lessons?.length) {
+            result.title = this.teacherName;
+            result.subtitle = lessons[0].week;
+
+            lessons.reduce((accumulator, lesson, index) => {
+                if (lesson.date === accumulator.date) {
+                    const lastSavedLesson: MappedLesson = accumulator.lessons.length ? 
+                        accumulator.lessons[accumulator.lessons.length-1] : null;
+
+                    if (lastSavedLesson?.time === lesson.time) {
+                        lastSavedLesson.subtitle += `, ${lesson.group}`
+                    } else {
+                        accumulator.lessons.push(this.mapTeacherLesson(lesson));
+                    }
+                } else {
+                    result.days.push(accumulator);
+                    accumulator = {
+                        date: lesson.date,
+                        day: lesson.day,
+                        lessons: [this.mapTeacherLesson(lesson)]
+                    };
+                }
+
+                if (index === lessons.length - 1) {
+                    result.days.push(accumulator);
+                }
+
+                return accumulator;
+            }, {
+                date: lessons[0].date,
+                day: lessons[0].day,
+                lessons: []
+            });
+        }
         return result;
     }
 
@@ -105,6 +142,16 @@ export class ScheduleComponent implements OnChanges {
             classRoom: lesson.classRoom,
             lessonType: lesson.lessonType,
             subtitle: lesson.teachers.join(', '),
+            time: lesson.time
+        };
+    }
+
+    private mapTeacherLesson(lesson: Lesson): MappedLesson {
+        return {
+            lessonName: lesson.lessonName,
+            classRoom: lesson.classRoom,
+            lessonType: lesson.lessonType,
+            subtitle: lesson.group,
             time: lesson.time
         };
     }
