@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MappedUser, UsersTableMapService } from '@modules/msw-admin/components/users-table/users-table-map.service';
 import { UsersApiService } from '@modules/msw-admin/services/users-api.service';
 import { ReplaySubject, Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
-
 @Component({
     selector: 'users-shell',
     templateUrl: './users-shell.component.html',
@@ -13,6 +13,8 @@ export class UsersShellComponent implements OnInit, OnDestroy {
 
     public totalItems: number;
     public isLoading = false;
+    public searchString: string;
+    public searchControl = new FormControl();
     private onDestroy = new Subject();
     private mappedUsersSbj = new ReplaySubject<MappedUser[]>()
     public mappedUsers$ = this.mappedUsersSbj.asObservable();
@@ -31,6 +33,10 @@ export class UsersShellComponent implements OnInit, OnDestroy {
         this.onDestroy.complete();
     }
 
+    public onSearch() {
+        this.searchString = this.searchControl.value;
+    }
+
     private updateDataset(): void {
         this.isLoading = true;
         this.apiService.getUsers()
@@ -39,7 +45,7 @@ export class UsersShellComponent implements OnInit, OnDestroy {
                 finalize(() => this.isLoading = false)
             )
             .subscribe(data => {
-                this.totalItems = data.total;
+                this.resetSearch();
                 const users = this.mapService.getMappedData(data.items);
                 this.mappedUsersSbj.next(users);
             });
@@ -47,6 +53,11 @@ export class UsersShellComponent implements OnInit, OnDestroy {
 
     public onRefreshClick(): void {
         this.updateDataset();
+    }
+
+    private resetSearch(): void {
+        this.searchControl.reset('');
+        this.searchString = '';
     }
 
 }

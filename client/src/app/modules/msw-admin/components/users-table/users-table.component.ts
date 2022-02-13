@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,26 +14,38 @@ import { MappedUser } from './users-table-map.service';
     templateUrl: './users-table.component.html',
     styleUrls: ['./users-table.component.scss']
 })
-export class UsersTableComponent implements OnInit, AfterViewInit, OnDestroy {
+export class UsersTableComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges {
 
     @Input() mappedUsers$: Observable<MappedUser[]>;
+    @Input() searchString: string;
+
+    @Output() totalItems = new EventEmitter<number>();
 
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(MswPaginator) paginatorComp: MswPaginator;
 
     public displayedColumns: string[] = ['username', 'name', 'group', 'createdAt', 'lastUseAt', 'action'];
-    public totalItems: number;
     public dataSource: MatTableDataSource<MappedUser>;
     public isLoading = true;
     private onDestroy = new Subject();
 
     constructor(
         private dialog: MatDialog,
-    ) {}
+    ) {
+        this.dataSource = new MatTableDataSource();
+        this.dataSource.filterPredicate = (user, filter) =>
+            user.group?.includes(filter) || user.name?.includes(filter)
+            || user.username?.includes(filter);
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.searchString && this.dataSource.data?.length) {
+            this.dataSource.filter = this.searchString;
+            this.totalItems.emit(this.dataSource.filteredData.length);
+        }
+    }
     
     ngOnInit(): void {
-        this.dataSource = new MatTableDataSource();
-
         this.mappedUsers$
             .pipe( takeUntil(this.onDestroy) )
             .subscribe(users => {

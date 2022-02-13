@@ -17,7 +17,20 @@
         </div>
     </mat-card-header>
     <mat-card-content [loading]="isLoading">
-        <users-table [mappedUsers$]="mappedUsers$"></users-table>
+        <div class="filter-wrapper">
+            <div class="form-group">
+                <mat-form-field class="compact">
+                    <mat-label>Поиск</mat-label>
+                    <input matInput type="text" [formControl]="searchControl" (keyup.enter)="onSearch()">
+                </mat-form-field>
+                <button mat-flat-button class="search-button" color="primary"
+                    (click)="onSearch()"
+                >Найти</button>
+            </div>
+        </div>
+        <users-table [mappedUsers$]="mappedUsers$" [searchString]="searchString"
+            (totalItems)="totalItems = $event"
+        ></users-table>
     </mat-card-content>
 </mat-card>
 
