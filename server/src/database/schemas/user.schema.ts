@@ -27,12 +27,12 @@ export interface User {
         number: number;
         balance: number;
         dolg: number;
-        pania: number;
+        penia: number;
     },
-    notifications: {
-        scheduleChange: boolean;
-		balanceChange: boolean;
-		daySchedule: boolean;
+    notifications?: {
+        scheduleChange?: boolean;
+		balanceChange?: boolean;
+		daySchedule?: boolean;
     }
 }
 
