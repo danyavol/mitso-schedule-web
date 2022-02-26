@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3080;
 
  
 // Requests allowed only from this domain
-app.use( cors({origin: 'http://localhost:4200', credentials: true}) );
+app.use( cors({origin: ['http://localhost:4200', 'https://mitso.netlify.app'], credentials: true}) );
 
 // Requests parser
 app.use( express.urlencoded({extended: true}) );
