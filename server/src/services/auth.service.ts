@@ -42,6 +42,7 @@ export function createAdminToken(res: Response): void {
 
     res.cookie(tokenField, token, {
         expires: new Date(Date.now() + expirationTime),
-        httpOnly: true
+        httpOnly: true,
+        sameSite: false
     });
 }
