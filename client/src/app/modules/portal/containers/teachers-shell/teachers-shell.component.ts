@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Lesson, ScheduleType, Week } from '@modules/portal/interfaces/portal.interface';
 import { PortalApiService } from '@modules/portal/services/portal-api.service';
 import { combineLatest, Observable } from 'rxjs';
-import { debounceTime, delay, distinctUntilChanged, filter, map, startWith, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, map, startWith, switchMap, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'teachers-shell',
@@ -52,7 +52,6 @@ export class TeachersShellComponent implements OnInit {
 
     private getWeeksObs(): Observable<Week[]> {
         return this.portalApi.getAvailableWeeks().pipe(
-            delay(0),
             tap((data) => {
                 this.form.get('week').setValue(data[0]?.collection);
             })
@@ -64,7 +63,6 @@ export class TeachersShellComponent implements OnInit {
             this.weekChange$,
             this.teacherChange$
         ]).pipe(
-            delay(0), // Needed to rerender dropdown after option select
             debounceTime(200),
             distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
             filter(([collection]) => !!collection),

@@ -1,4 +1,4 @@
-<mat-card *ngIf="{ teachers: teachers$ | async, weeks: weeks$ | async, lessons: lessons$ | async} as vm" [formGroup]="form">
+<mat-card *ngIf="{ lessons: lessons$ | async, teachers: teachers$ | async, weeks: weeks$ | async } as vm" [formGroup]="form">
     <div class="form-group settings-panel">
         <mat-form-field>
             <mat-label>Преподаватель</mat-label>
