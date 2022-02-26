@@ -52,6 +52,7 @@ export class TeachersShellComponent implements OnInit {
 
     private getWeeksObs(): Observable<Week[]> {
         return this.portalApi.getAvailableWeeks().pipe(
+            delay(0),
             tap((data) => {
                 this.form.get('week').setValue(data[0]?.collection);
             })
