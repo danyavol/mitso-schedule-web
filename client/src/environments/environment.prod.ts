@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost:3080'
+    apiUrl: 'https://mitso-schedule.herokuapp.com/'
 };

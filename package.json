@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "heroku-prebuild": "cd server && npm i && npm run build",
+        "start": "cd dist && node index.js"
+    }
+}
