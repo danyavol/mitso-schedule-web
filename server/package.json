@@ -2,6 +2,7 @@
     "name": "headman-app-server",
     "version": "1.0.0",
     "scripts": {
+        "tsc": "tsc",
         "dev": "nodemon -r tsconfig-paths/register src/index.ts",
         "build": "tsc --build"
     },
