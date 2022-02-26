@@ -1,0 +1,17 @@
+.app-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+
+    .app-item {
+        .title {
+            margin-bottom: 10px;
+        }
+
+        .brand-logo {
+            width: 200px;
+            height: 75px;
+        }
+    }
+}

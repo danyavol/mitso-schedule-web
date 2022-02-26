@@ -15,5 +15,9 @@ export enum IconsEnum {
     success = 'success',
     refresh = 'refresh',
     tune = 'tune',
-    edit = 'edit'
+    edit = 'edit',
+    payments = 'payments',
+    mongoDB_horizontal = 'brands/mongoDB_horizontal',
+    heroku_horizontal = 'brands/heroku_horizontal',
+    coralogix_horizontal = 'brands/coralogix_horizontal'
 }

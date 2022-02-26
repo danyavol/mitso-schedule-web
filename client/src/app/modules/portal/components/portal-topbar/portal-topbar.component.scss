@@ -9,6 +9,10 @@
     align-items: center;
     gap: 16px;
 
+    .logo {
+        margin-right: 50px;
+    }
+
     &.mobile-view {
         justify-content: start;
         gap: 8px;

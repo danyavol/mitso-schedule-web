@@ -1,25 +1,29 @@
-<div class="sidebar" fxLayout="column">  
+<div class="sidebar" fxLayout="column">
+    
+    <ng-container *ngIf="isMobileView">
+        <app-logo class="logo"></app-logo>
+    </ng-container>
 
-    <button mat-button class="menu-button" routerLink="/msw-admin/dashboard" routerLinkActive="active" (click)="onElementClick()">
+    <a mat-button class="menu-button" routerLink="/msw-admin/dashboard" routerLinkActive="active" (click)="onElementClick()">
         <mat-icon class="menu-icon" svgIcon="dashboard"></mat-icon>
         Статистика
-    </button>
-    <button mat-button class="menu-button" routerLink="/msw-admin/users" routerLinkActive="active" (click)="onElementClick()">
+    </a>
+    <a mat-button class="menu-button" routerLink="/msw-admin/users" routerLinkActive="active" (click)="onElementClick()">
         <mat-icon class="menu-icon" svgIcon="people"></mat-icon>
         Пользователи
-    </button>
+    </a>
 
-    <button mat-button class="menu-button" (click)="onElementClick()">
+    <a mat-button class="menu-button" routerLink="/msw-admin/settings" routerLinkActive="active" (click)="onElementClick()">
         <mat-icon class="menu-icon" svgIcon="settings"></mat-icon>
         Настройки
-    </button>
+    </a>
 
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" routerLink="/" (click)="onElementClick()">
+    <a mat-button class="menu-button" routerLink="/" (click)="onElementClick()">
         <mat-icon class="menu-icon" svgIcon="arrow_back"></mat-icon>
         Назад на главную
-    </button>
+    </a>
 
 
     

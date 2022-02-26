@@ -19,6 +19,7 @@ import { FeaturesUsageComponent } from './components/charts/features-usage/featu
 import { NewUsersStatsComponent } from './components/charts/new-users-stats/new-users-stats.component';
 import { UsersActivityComponent } from './components/charts/users-activity/users-activity.component';
 import { EditUserModalComponent } from './components/edit-user-modal/edit-user-modal.component';
+import { SettingsShellComponent } from './containers/settings-shell/settings-shell.component';
 
 
 
@@ -37,6 +38,7 @@ import { EditUserModalComponent } from './components/edit-user-modal/edit-user-m
         NewUsersStatsComponent,
         UsersActivityComponent,
         EditUserModalComponent,
+        SettingsShellComponent,
     ],
     imports: [
         CommonModule,

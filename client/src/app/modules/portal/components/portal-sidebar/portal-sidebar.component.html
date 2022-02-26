@@ -1,13 +1,21 @@
-<div class="sidebar" fxLayout="column">  
+<div class="sidebar" fxLayout="column">
 
-    <button mat-button class="menu-button" routerLink="/schedule" routerLinkActive="active" (click)="onElementClick()">
+    <app-logo class="logo"></app-logo>
+
+    <a mat-button class="menu-button" routerLink="/schedule" routerLinkActive="active" (click)="onElementClick()">
         <mat-icon class="menu-icon" svgIcon="calendar"></mat-icon>
         Расписание
-    </button>
+    </a>
 
-    <button mat-button class="menu-button" routerLink="/teachers" routerLinkActive="active" (click)="onElementClick()">
+    <a mat-button class="menu-button" routerLink="/teachers" routerLinkActive="active" (click)="onElementClick()">
         <mat-icon class="menu-icon" svgIcon="people"></mat-icon>
         Преподаватели
-    </button>
+    </a>
+
+    <a mat-button class="menu-button" routerLink="/balance" routerLinkActive="active" (click)="onElementClick()">
+        <mat-icon class="menu-icon" svgIcon="payments"></mat-icon>
+        Баланс
+    </a>
+
 
 </div>

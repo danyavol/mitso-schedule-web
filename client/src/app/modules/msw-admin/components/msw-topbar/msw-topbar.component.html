@@ -1,6 +1,10 @@
 <mat-toolbar>
 
     <div class="topbar-group">
+        <div *ngIf="!isMobileView" class="logo">
+            <app-logo></app-logo>
+        </div>
+
         <div *ngIf="isMobileView">
             <button mat-icon-button color="primary" *ngIf="!isSidenavOpened" (click)="sidenav.open()">
                 <mat-icon svgIcon="menu"></mat-icon>
@@ -13,6 +17,7 @@
         <h3 *ngIf="isMobileView">
             <ng-container *ngIf="url === '/msw-admin/users'">Пользователи</ng-container>
             <ng-container *ngIf="url === '/msw-admin/dashboard'">Статистика</ng-container>
+            <ng-container *ngIf="url === '/msw-admin/settings'">Настройки</ng-container>
         </h3>
     </div>
 

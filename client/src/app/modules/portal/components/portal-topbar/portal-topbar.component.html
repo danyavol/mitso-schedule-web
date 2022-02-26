@@ -11,18 +11,28 @@
         <h3>
             <ng-container *ngIf="url === '/schedule'">Расписание</ng-container>
             <ng-container *ngIf="url === '/teachers'">Преподаватели</ng-container>
+            <ng-container *ngIf="url === '/balance'">Баланс</ng-container>
         </h3>
     </ng-container>
 
     <ng-template #desktopViewTemplate>
-        <button mat-button routerLink="/schedule" [class.mat-flat-button]="isRouteActive('/schedule')" color="primary">
+
+        <app-logo class="logo"></app-logo>
+
+        <a mat-button routerLink="/schedule" [class.mat-stroked-button]="isRouteActive('/schedule')" color="primary">
             <mat-icon svgIcon="calendar"></mat-icon>
             Расписание
-        </button>
-        <button mat-button routerLink="/teachers" [class.mat-flat-button]="isRouteActive('/teachers')" color="primary">
+        </a>
+
+        <a mat-button routerLink="/teachers" [class.mat-stroked-button]="isRouteActive('/teachers')" color="primary">
             <mat-icon svgIcon="people"></mat-icon>
             Преподаватели
-        </button>
+        </a>
+
+        <a mat-button routerLink="/balance" [class.mat-stroked-button]="isRouteActive('/balance')" color="primary">
+            <mat-icon svgIcon="payments"></mat-icon>
+            Баланс
+        </a>
     </ng-template>
 
 </mat-toolbar>

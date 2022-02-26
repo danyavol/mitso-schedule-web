@@ -8,6 +8,10 @@
     display: flex;
     justify-content: space-between;
 
+    .logo {
+        margin-left: 12px;
+    }
+
     .topbar-group {
         display: flex;
         align-items: center;

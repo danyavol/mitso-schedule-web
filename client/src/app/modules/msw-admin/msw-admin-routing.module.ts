@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardShellComponent } from './containers/dashboard-shell/dashboard-shell.component';
 import { LoginShellComponent } from './containers/login-shell/login-shell.component';
 import { MSWAdminShellComponent } from './containers/msw-admin-shell/msw-admin-shell.component';
+import { SettingsShellComponent } from './containers/settings-shell/settings-shell.component';
 import { UsersShellComponent } from './containers/users-shell/users-shell.component';
 import { MSWAdminGuard } from './guards/msw-admin.guard';
 
@@ -24,6 +25,10 @@ const routes: Routes = [
             {
                 path: 'users',
                 component: UsersShellComponent
+            },
+            {
+                path: 'settings',
+                component: SettingsShellComponent
             },
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
         ]
