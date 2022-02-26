@@ -5,7 +5,7 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
-        "watch": "ng build --watch --configuration development",
+        "postbuild": "node copy-distribution-files.js",
         "test": "ng test"
     },
     "private": true,
