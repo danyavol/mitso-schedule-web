@@ -1,27 +1,52 @@
-# mitso-schedule-web
+# Study Buddy Web
 
-Данное веб-приложение - панель администратора для телеграм бота.
+https://mitso.netlify.app/
 
-### Попасть на все последующие разделы может только администратор, введя пароль в данную форму
+Данное приложение - веб версия Telegram бота. Здесь есть функционал как для обычных пользователей, так и для администратора.
 
-![image](https://user-images.githubusercontent.com/48417874/144421929-4839de34-f405-40ca-9f59-9ea0c32280a5.png)
+## 1) Функционал для обычных пользователей
 
-### Далее там можно найти страницу со всевозможной статистикой телеграм бота
+### Просмотр расписания занятий группы
 
-![image](https://user-images.githubusercontent.com/48417874/144422769-736b58f2-3505-4c3f-b2aa-9810ffc6b8c4.png)
+![image](https://user-images.githubusercontent.com/48417874/155851018-8fc46f92-6494-4db9-8fa0-9d54aa674121.png)
 
-### Страницу со списком пользователей, а так же возможностью отредактировать пользователя
+### Просмотр расписания занятий преподавателя
 
-![image](https://user-images.githubusercontent.com/48417874/144422801-b85da7ea-6c49-48fe-8bcc-46de22a304fd.png)
-![image](https://user-images.githubusercontent.com/48417874/144422829-385ba777-c407-4bd5-b24f-e77d59a321d1.png)
+![image](https://user-images.githubusercontent.com/48417874/155851040-d422ce65-c538-4eae-94dc-2fbc04a1f5ab.png)
 
-### Страница настроек, с которой можно выполнять управление ботом: отключать его полностью на время, отключать только некоторые его функции и т.д.
+### Просмотр баланса лицевого счета
 
 In progress
 
 ### Мобильная адаптация
 
-![image](https://user-images.githubusercontent.com/48417874/144422088-1da2454b-b20d-433a-8d91-35bdc8f8cb5f.png)
-![image](https://user-images.githubusercontent.com/48417874/144422149-0a4cfc16-ec2e-4c2d-97f1-ce8985be648d.png)
-![image](https://user-images.githubusercontent.com/48417874/144422689-1c5b36cc-ac5b-4ae8-a462-ba7cc5363de2.png)
+![image](https://user-images.githubusercontent.com/48417874/155851177-a9509aa9-79c5-48c7-b111-09231fd01b4b.png)
+![image](https://user-images.githubusercontent.com/48417874/155851190-97a334b4-b2c2-4b3d-a4f9-8684d490e5d8.png)
+
+## 2) Функционал для администратора
+
+### Попасть на все последующие разделы может только администратор, введя пароль в данную форму
+
+Авторизация выполняется с помощью JWT токена, который хранится как HttpOnly Cookie
+
+![image](https://user-images.githubusercontent.com/48417874/144421929-4839de34-f405-40ca-9f59-9ea0c32280a5.png)
+
+### Дэшборд со всевозможной статистикой Telegram бота
+
+![image](https://user-images.githubusercontent.com/48417874/155851261-11eb0814-0b4e-4657-b68f-0202fa6f630a.png)
+
+### Cписок пользователей c возможностью редактирования
+
+![image](https://user-images.githubusercontent.com/48417874/155851529-3b5daaae-9205-4432-aee1-a01549734869.png)
+![image](https://user-images.githubusercontent.com/48417874/144422829-385ba777-c407-4bd5-b24f-e77d59a321d1.png)
+
+### Страница настроек
+
+![image](https://user-images.githubusercontent.com/48417874/155851717-d4afc555-b4ba-4cab-af2c-f482a0fff2c4.png)
+
+### Мобильная адаптация
+
+![image](https://user-images.githubusercontent.com/48417874/155851606-dbc0e0d5-f1e6-4141-952d-e1489c748109.png)
+![image](https://user-images.githubusercontent.com/48417874/155851626-de86376c-5377-483e-9954-b5e2c8ba380b.png)
+![image](https://user-images.githubusercontent.com/48417874/155851637-ebefb533-9cbd-4919-8105-f32cd80b9f16.png)
 
