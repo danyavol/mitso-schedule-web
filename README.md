@@ -42,7 +42,7 @@ In progress
 
 ### Страница настроек
 
-![image](https://user-images.githubusercontent.com/48417874/155851717-d4afc555-b4ba-4cab-af2c-f482a0fff2c4.png)
+![image](https://user-images.githubusercontent.com/48417874/155853634-ccde73c6-408a-42dd-9805-91023fa69e4b.png)
 
 ### Мобильная адаптация
 
