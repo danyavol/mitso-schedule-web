@@ -19,5 +19,6 @@ export enum IconsEnum {
     payments = 'payments',
     mongoDB_horizontal = 'brands/mongoDB_horizontal',
     heroku_horizontal = 'brands/heroku_horizontal',
-    coralogix_horizontal = 'brands/coralogix_horizontal'
+    coralogix_horizontal = 'brands/coralogix_horizontal',
+    netlify_horizontal = 'brands/netlify_horizontal'
 }

@@ -5,12 +5,18 @@
     gap: 30px;
 
     .app-item {
+        .buttons-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;    
+        }
+
         .title {
             margin-bottom: 10px;
         }
 
         .brand-logo {
-            width: 200px;
+            min-width: 200px;
             height: 75px;
         }
     }
