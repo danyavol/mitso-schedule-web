@@ -1,0 +1,20 @@
+<mat-card>
+    <div class="form-group balance-number-form">
+        <mat-form-field>
+            <mat-label>Номер лицевого счета</mat-label>
+            <input matInput type="text" [formControl]="balanceNumber" (keyup.enter)="onSearch()"/>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" class="search-button big" [disabled]="!balanceNumber.value" (click)="onSearch()">Найти</button>
+    </div>
+    <div [loading]="isLoading">
+        <div class="result-section" *ngIf="balanceData$ | async as balanceData; else placeholder">
+            <h3 class="placeholder error" *ngIf="balanceData.error">{{balanceData.error}}</h3>
+            <p *ngIf="!balanceData.error">{{balanceData | json}}</p>
+        </div>
+    </div>
+</mat-card>
+
+<ng-template #placeholder>
+    <h3 class="placeholder">Введите номер Вашего лицевого счета, чтобы узнать баланс</h3>
+</ng-template>

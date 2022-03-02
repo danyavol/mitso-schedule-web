@@ -93,6 +93,7 @@ export class HttpService {
     private handleError(err: HttpErrorResponse | ErrorEvent | any): any {
         let message: string;
         let status: number;
+        let error: any;
         if (err.error instanceof ErrorEvent) {
             message = `An error occurred: ${err.error.message}`;
             status = err.error.status;
@@ -103,8 +104,9 @@ export class HttpService {
         else {
             message = `Backend returned code ${err.status}: ${err.message}`;
             status = err.status;
+            error = err.error;
         }
 
-        return throwError({ message, status });
+        return throwError({ message, status, error });
     }
 }

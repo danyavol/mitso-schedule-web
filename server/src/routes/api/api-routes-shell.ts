@@ -1,6 +1,7 @@
 import { adminOnly } from "@services/auth.service";
 import { Router } from "express";
 import auth from "./auth.routes";
+import balance from "./balance.routes";
 import classroom from "./classroom.routes";
 import groups from "./groups.routes";
 import schedule from "./schedule.routes";
@@ -19,3 +20,4 @@ apiRoutes.use('/auth', auth);
 apiRoutes.use('/schedule', schedule);
 apiRoutes.use('/teachers', teachers);
 apiRoutes.use('/classroom', classroom);
+apiRoutes.use('/balance', balance);

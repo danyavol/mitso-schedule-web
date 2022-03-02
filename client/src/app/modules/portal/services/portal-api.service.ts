@@ -2,8 +2,9 @@ import { Injectable } from "@angular/core";
 import { HttpService } from "@core/services/http.service";
 import { GroupedGroupsFromApi } from "@shared/interfaces/lookup.interface";
 import { LookupApiService } from "@shared/services/lookup-api.service";
-import { Observable } from "rxjs";
-import { Lesson, Week } from "../interfaces/portal.interface";
+import { Observable, of } from "rxjs";
+import { catchError } from "rxjs/operators";
+import { BalanceResponse, Lesson, Week } from "../interfaces/portal.interface";
 
 @Injectable()
 export class PortalApiService {
@@ -35,6 +36,11 @@ export class PortalApiService {
 
     public getTeachersSchedule(collection: string, teacher: string): Observable<Lesson[]> {
         const path = `/api/teachers/${collection}/${teacher}`;
+        return this.http.get(path);
+    }
+
+    public getBalance(balanceNumber: string): Observable<BalanceResponse> {
+        const path = `/api/balance/${balanceNumber}`;
         return this.http.get(path);
     }
 

@@ -11,6 +11,10 @@ export class NotificationService {
 
     constructor(private snackBar: MatSnackBar) {}
 
+    public close(): void {
+        this.snackBar.dismiss();
+    }
+
     public info(message: string, config?: MatSnackBarConfig<string>): MatSnackBarRef<NotificationComponent> {
         return this.snackBar.openFromComponent(NotificationComponent, 
             { ...this.meta.info, data: message, ...config }

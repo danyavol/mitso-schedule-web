@@ -1,0 +1,15 @@
+@use 'sass:map';
+@import '/src/styles/variables.scss';
+
+.search-button {
+    flex-grow: 0;
+}
+
+.placeholder {
+    margin-top: 20px;
+    text-align: center;
+
+    &.error {
+        color: map.get($error-colors, 500);
+    }
+}

@@ -19,3 +19,15 @@ export enum ScheduleType {
     Group,
     Teacher
 }
+
+export interface BalanceResponse {
+    error?: string;
+    data: {
+        balance: number;
+        dolg: number;
+        penia: number;
+        date: string;
+        personStatus: string;
+        personName: string;
+    }
+}
