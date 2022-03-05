@@ -14,7 +14,6 @@ interface BalanceParseResult {
         dolg: number;
         penia: number;
         date: string;
-        personStatus: string;
         personName: string;
     }
 }
@@ -49,7 +48,6 @@ function getBalanceFromHtml(html: string, isError = false): BalanceParseResult {
             dolg: null,
             penia: null,
             date: null,
-            personStatus: null,
             personName: null
 		},
         error: null
@@ -76,8 +74,6 @@ function getBalanceFromHtml(html: string, isError = false): BalanceParseResult {
 
         let s = $('#what_section b');
 		if (s) result.data.date = norm(s.text());
-		s = $('#topsection #title');
-		if (s) result.data.personStatus = s.text();
 		s = $('#topsection .topmenu');
 		if (s) result.data.personName = norm(s.text());
 

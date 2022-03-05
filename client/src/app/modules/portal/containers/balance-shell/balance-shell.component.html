@@ -10,7 +10,25 @@
     <div [loading]="isLoading">
         <div class="result-section" *ngIf="balanceData$ | async as balanceData; else placeholder">
             <h3 class="placeholder error" *ngIf="balanceData.error">{{balanceData.error}}</h3>
-            <p *ngIf="!balanceData.error">{{balanceData | json}}</p>
+
+            <div *ngIf="!balanceData.error">
+                <h2 class="student-name">{{balanceData.data.personName}}</h2>
+                <h3 class="balance-date">{{balanceData.data.date}}</h3>
+                <table class="balance-table">
+                    <tr>
+                        <th>Баланс</th>
+                        <td>{{balanceData.data.balance | mswCurrency}}</td>
+                    </tr>
+                    <tr>
+                        <th>Основной долг</th>
+                        <td>{{balanceData.data.dolg | mswCurrency}}</td>
+                    </tr>
+                    <tr>
+                        <th>Пеня</th>
+                        <td>{{balanceData.data.penia | mswCurrency}}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </mat-card>

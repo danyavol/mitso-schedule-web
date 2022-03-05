@@ -29,6 +29,7 @@ import { LoadingDirective } from './directives/loading.directive';
 import { MswDatePipe } from './pipes/msw-date.pipe';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { AppLogoComponent } from './components/app-logo/app-logo.component';
+import { MswCurrencyPipe } from './pipes/currency.pipe';
 
 
 const NG_MATERIALS = [
@@ -66,6 +67,7 @@ const NG_MODULES = [
         MswPaginator,
         AdaptiveViewDirective,
         AppLogoComponent,
+        MswCurrencyPipe,
     ],
     imports: [
         CommonModule,
@@ -86,6 +88,7 @@ const NG_MODULES = [
         NgApexchartsModule,
         NgxMatSelectSearchModule,
         AppLogoComponent,
+        MswCurrencyPipe,
     ],
     providers: [
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline', floatLabel: 'auto' } },

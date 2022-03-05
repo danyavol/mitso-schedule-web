@@ -13,3 +13,34 @@
         color: map.get($error-colors, 500);
     }
 }
+
+.student-name {
+    font-size: 20px;
+    margin: 5px 20px 20px 20px;
+}
+
+.balance-date {
+    font-size: 16px;
+    font-weight: 600;
+    color: map.get($info-colors, 900);
+    background-color: map.get($info-colors, 100);
+    padding: 5px 20px;
+    border-radius: 10px 10px 0 0;
+    margin: 0;
+}
+
+.balance-table {
+    text-align: left;
+    padding: 5px 10px 0;
+
+    th {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    td {
+        font-weight: 600;
+        font-size: 18px;
+        padding: 5px 0 5px 30px;
+    }
+}

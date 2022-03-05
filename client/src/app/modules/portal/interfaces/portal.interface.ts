@@ -27,7 +27,6 @@ export interface BalanceResponse {
         dolg: number;
         penia: number;
         date: string;
-        personStatus: string;
         personName: string;
     }
 }
