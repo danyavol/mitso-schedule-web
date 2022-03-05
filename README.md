@@ -16,7 +16,7 @@ https://mitso.netlify.app/
 
 ### Просмотр баланса лицевого счета
 
-In progress
+![image](https://user-images.githubusercontent.com/48417874/156901058-6b9858a8-ff08-47fc-833a-90eb4d88e2f7.png)
 
 ### Мобильная адаптация
 
@@ -29,7 +29,7 @@ In progress
 
 Авторизация выполняется с помощью JWT токена, который хранится как HttpOnly Cookie
 
-![image](https://user-images.githubusercontent.com/48417874/144421929-4839de34-f405-40ca-9f59-9ea0c32280a5.png)
+![image](https://user-images.githubusercontent.com/48417874/156901123-f18ee5e2-0ecd-4cdf-baf4-501c8b9c1465.png)
 
 ### Дэшборд со всевозможной статистикой Telegram бота
 
@@ -49,4 +49,5 @@ In progress
 ![image](https://user-images.githubusercontent.com/48417874/155851606-dbc0e0d5-f1e6-4141-952d-e1489c748109.png)
 ![image](https://user-images.githubusercontent.com/48417874/155851626-de86376c-5377-483e-9954-b5e2c8ba380b.png)
 ![image](https://user-images.githubusercontent.com/48417874/155851637-ebefb533-9cbd-4919-8105-f32cd80b9f16.png)
+
 
