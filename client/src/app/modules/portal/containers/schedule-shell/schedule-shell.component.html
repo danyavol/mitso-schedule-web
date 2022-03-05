@@ -27,7 +27,9 @@
         </mat-form-field>
     </div>
 
-    <div class="schedule" [loading]="isLoading">
+    <div class="schedule" [loading]="isLoading" *ngIf="!isError">
         <schedule [lessons]="vm.schedule"></schedule>
     </div>
+
+    <h3 *ngIf="isError" class="error">Произошла ошибка во время загрузки расписания</h3>
 </mat-card>

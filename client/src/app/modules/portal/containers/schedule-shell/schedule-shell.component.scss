@@ -1,3 +1,12 @@
+@use 'sass:map';
+@import '/src/styles/variables.scss';
+
 .settings-panel {
     margin-bottom: 20px;
+}
+
+.error {
+    text-align: center;
+    color: map.get($error-colors, 500);
+    margin-bottom: 16px !important;
 }

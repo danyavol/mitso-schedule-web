@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Lesson, Week } from '@modules/portal/interfaces/portal.interface';
 import { PortalApiService } from '@modules/portal/services/portal-api.service';
 import { GroupedGroupsFromApi } from '@shared/interfaces/lookup.interface';
-import { combineLatest, Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { combineLatest, Observable, of } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, filter, map, startWith, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
 @Component({
     selector: 'schedule-shell',
@@ -22,6 +22,7 @@ export class ScheduleShellComponent implements OnInit {
     public weeks$: Observable<Week[]>;
     public schedule$: Observable<Lesson[]>;
     public isLoading = false;
+    public isError = false;
 
     private groupSearchChange$ = this.form.get('groupSearch').valueChanges;
     private groupChange$ = this.form.get('group').valueChanges;
@@ -69,7 +70,6 @@ export class ScheduleShellComponent implements OnInit {
             ),
             tap((data) => {
                 this.form.get('week').setValue(data[0]?.collection);
-                
             })
         );
     }
@@ -79,10 +79,17 @@ export class ScheduleShellComponent implements OnInit {
             withLatestFrom(this.groupChange$),
             filter(([collection]) => !!collection),
             debounceTime(200),
-            distinctUntilChanged((a, b) => a[0] === b[0]),
-            tap(() => this.isLoading = true),
+            tap(() => {
+                this.isLoading = true;
+                this.isError = false;
+            }),
             switchMap(([collection, group]) => 
-                this.portalApi.getSchedule(collection, group)
+                this.portalApi.getSchedule(collection, group).pipe(
+                    catchError(() => {
+                        this.isError = true;
+                        return of([]);
+                    })
+                )
             ),
             tap(() => this.isLoading = false)
         );
